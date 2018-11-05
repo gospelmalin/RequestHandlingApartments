@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartViewController">
+   <children>
+      <TextArea fx:id="startMessageConsole" layoutX="30.0" layoutY="295.0" prefHeight="91.0" prefWidth="543.0" />
+      <Label layoutX="30.0" layoutY="278.0" text="Message console" />
+      <Label layoutX="5.0" layoutY="6.0" prefHeight="42.0" prefWidth="580.0" text="Welcome to Request Handling System for Apartments!">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="openNewRequestFormBtn" layoutX="20.0" layoutY="98.0" mnemonicParsing="false" text="Add new request" />
+      <Button fx:id="openViewRequestsFormBtn" layoutX="20.0" layoutY="149.0" mnemonicParsing="false" text="View request(s)" />
+      <Label layoutX="20.0" layoutY="62.0" text="What do you want to do?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
