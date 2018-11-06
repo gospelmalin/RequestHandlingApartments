@@ -16,8 +16,8 @@ public class DBUtil {
 		static final String timezoneFix = "?useLegacyDatetimeCode=false&serverTimezone=Europe/Stockholm";
 		static final String databaseName="requesthandling";
 		static final String connectionString = "jdbc:mariadb://192.168.1.83:3306/requesthandling";
-		String username = "malin";
-		String password = "Ilgdatabas";
+		String username = "yhAdmin";
+		String password = "yhsipi17";
 
 	//Declare driver
 	//TODO private static final String...
@@ -44,8 +44,8 @@ public class DBUtil {
 	    	
 			//Connection conn = DriverManager.getConnection("jdbc:mysql://username:password@ipadress");
 			//Connection conn = DriverManager.getConnection("jdbc:mariadb://IP Adress:PORT/Databas", "user",  "password");
-			//TODO note: update username and password before running
-			Connection conn = DriverManager.getConnection("jdbc:mariadb://192.168.1.83:3306/requesthandling", "username", "password");
+			
+			Connection conn = DriverManager.getConnection("jdbc:mariadb://192.168.1.83:3306/requesthandling", "yhAdmin", "yhsipi17");
 			
 			
 				System.out.println("Got a connection!");
