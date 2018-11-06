@@ -40,7 +40,7 @@ public class StatusRepository {
 	
 	public void addStatus(String description) {
 		
-		String query = "INSERT INTO status (status_description) VALUES("+ description + ");";
+		String query = "INSERT INTO status(status_description) VALUES('" + description + "');";
 		Database.executeUpdate(query);
 		
 	}
