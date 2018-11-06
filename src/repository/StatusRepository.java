@@ -8,6 +8,7 @@ import util.Database;
 public class StatusRepository {
 
 	public Status getStatus(int id) {
+
 		
 		// get by id 
 		String query = "SELECT * FROM status WHERE status_id = " + id;
@@ -36,4 +37,12 @@ public class StatusRepository {
 	
 		return status;
 	}
+	
+	public void addStatus(String description) {
+		
+		String query = "INSERT INTO status (status_description) VALUES("+ description + ");";
+		Database.executeUpdate(query);
+		
+	}
+	
 }
