@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class Database {
 	
-	private static final String DATABASE = "servicedb";
+	private static final String DATABASE = "requesthandling";
 	private static final String CONN_STR = "jdbc:mariadb://172.20.10.3:3306/" + DATABASE;
 	private static final String USER = "yhAdmin";
 	private static final String PWD = " yhsipi17";
