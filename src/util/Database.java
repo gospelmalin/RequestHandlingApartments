@@ -2,6 +2,7 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,17 +56,37 @@ public class Database {
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(query);
+			stmt.close();
 			
 		} catch (SQLException e) {
 			System.err.println("An SQL exception occured when while executing query " + e);
 		}
-
+		
+		// close db
+		dbClose();
+		
     	return rs;
     	
     }
     
     //DB Execute Update (For Update/Insert/Delete) Operation
-    public static void executeUpdate(String sqlStmt) {
-    	
+    public static void executeUpdate(String query) {
+
+    	// connect to db
+    	dbConnect();
+
+    	// do querying
+		try {
+			PreparedStatement stmt = conn.prepareStatement(query);
+			stmt.executeUpdate();
+			stmt.close();
+			
+		} catch (SQLException e) {
+			System.err.println("An SQL exception occured when while executing query " + e);
+		}
+		
+		// close db
+		dbClose();
+		
     }
 }
