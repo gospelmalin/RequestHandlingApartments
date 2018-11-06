@@ -107,11 +107,16 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		
+		
+		// TEST
 		StatusRepository sr = new StatusRepository();
 		
+		// TEST GET Status 1
 		Status status = sr.getStatus(1);
-		
 		System.out.println(status.getStatus());
+		
+		// TEST ADD status
+		sr.addStatus("TEST");
 		
 		launch(args);
 
