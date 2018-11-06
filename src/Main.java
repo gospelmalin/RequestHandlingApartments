@@ -8,7 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
- 
+import model.Status;
+import repository.StatusRepository;
+
 import java.io.IOException;
 
 public class Main extends Application {
@@ -104,6 +106,13 @@ public class Main extends Application {
     */
 
 	public static void main(String[] args) {
+		
+		StatusRepository sr = new StatusRepository();
+		
+		Status status = sr.getStatus(1);
+		
+		System.out.println(status.getStatus());
+		
 		launch(args);
 
 	}
