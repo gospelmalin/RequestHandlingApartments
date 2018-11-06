@@ -111,13 +111,13 @@ public class Main extends Application {
 		// TEST
 		StatusRepository sr = new StatusRepository();
 		
-		// TEST GET Status 1
-		Status status = sr.getStatus(1);
-		System.out.println(status.getStatus());
-		
 		// TEST ADD status
 		sr.addStatus("TEST");
 		
+		// TEST GET Status 1
+		Status status = sr.getStatus(1);
+		System.out.println(status.getStatus());
+				
 		launch(args);
 
 	}
