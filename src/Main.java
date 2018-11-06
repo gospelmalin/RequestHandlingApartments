@@ -8,10 +8,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Area;
 import model.Status;
+import repository.AreaRepository;
 import repository.StatusRepository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
 	 //PrimaryStage
@@ -75,7 +78,8 @@ public class Main extends Application {
         try {
             //Load StartView from StartView.fxml
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("view/StartView.fxml"));
+            //loader.setLocation(Main.class.getResource("view/StartView.fxml"));          <--- Har ändrat här för att visa area bilden
+            loader.setLocation(Main.class.getResource("view/AreaView.fxml"));
             //BorderPane startView = (BorderPane) loader.load();
             AnchorPane startView = (AnchorPane) loader.load();
  
@@ -109,15 +113,24 @@ public class Main extends Application {
 		
 		
 		// TEST
-		StatusRepository sr = new StatusRepository();
+		//StatusRepository sr = new StatusRepository();
+		//AreaRepository ar = new AreaRepository();
 		
 		// TEST ADD status
-		sr.addStatus("TEST 7");
+		// sr.addStatus("TEST 7");
+		// Area area = new Area();
+		// area.setName("Sjögatan");
+		// ar.add(area);
 		
 		// TEST GET Status 1
-		Status status = sr.getStatus(7);
-		System.out.println(status.getStatus());
-				
+		// Status status = sr.getStatus(2);
+		// System.out.println(status.getStatus());
+		// System.out.println(ar.get(2).toString());
+		
+		// TEST GET ALL Areas and printout
+		// ArrayList<Area> areas = ar.getAll();
+		// areas.forEach(a -> System.out.println(a.toString()));
+
 		launch(args);
 
 	}
