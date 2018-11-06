@@ -76,9 +76,10 @@ public class Database {
     	dbConnect();
 
     	// do querying
+    	// TODO Change to preparedstatment
 		try {
-			PreparedStatement stmt = conn.prepareStatement(query);
-			stmt.executeUpdate();
+			Statement stmt = conn.createStatement();
+			stmt.executeQuery(query);
 			stmt.close();
 			
 		} catch (SQLException e) {
