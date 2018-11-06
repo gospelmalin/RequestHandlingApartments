@@ -112,10 +112,10 @@ public class Main extends Application {
 		StatusRepository sr = new StatusRepository();
 		
 		// TEST ADD status
-		sr.addStatus("TEST");
+		sr.addStatus("TEST 7");
 		
 		// TEST GET Status 1
-		Status status = sr.getStatus(1);
+		Status status = sr.getStatus(7);
 		System.out.println(status.getStatus());
 				
 		launch(args);
