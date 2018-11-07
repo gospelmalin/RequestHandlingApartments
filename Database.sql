@@ -4,17 +4,20 @@ CREATE TABLE `Person` (
 	`last_name` varchar(200) NOT NULL,
 	PRIMARY KEY (`person_id`)
 );
-
+/* Request table */
 CREATE TABLE `Request` (
-	`request_id`  NOT NULL,
-	`requester_id` int NOT NULL,
-	`apartment_id` int NOT NULL,
+	`request_id`  INT NOT NULL,
+	`requester_id` INT NOT NULL,
+	`apartment_id` INT NOT NULL,
 	`description` mediumtext NOT NULL,
 	`request_date` DATETIME NOT NULL,
-	`status_id` int NOT NULL,
+	`status_id` INT NOT NULL,
 	`completion_date` DATE NOT NULL,
-	`solver_id` int NOT NULL
+	`solver_id` INT NOT NULL
 );
+
+
+
 
 CREATE TABLE `Person_request` (
 	`person_request_id` int NOT NULL,
