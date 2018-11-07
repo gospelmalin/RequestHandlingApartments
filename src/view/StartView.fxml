@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -22,5 +23,8 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Separator layoutX="245.0" layoutY="89.0" orientation="VERTICAL" prefHeight="200.0" />
+      <Label layoutX="262.0" layoutY="76.0" text="Admins only" />
+      <Button fx:id="openAdminFormBtn" layoutX="262.0" layoutY="98.0" mnemonicParsing="false" onAction="#openAdminForm" text="Administrative tasks" />
    </children>
 </AnchorPane>
