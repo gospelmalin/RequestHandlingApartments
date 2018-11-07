@@ -17,10 +17,10 @@ public class Person {
 	}
 	
 	public Person(int personId, String firstName, String lastName) {
-		this.personId = personId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.fullName = firstName + " " + lastName;
+		setPersonId(personId);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setFullName(firstName, lastName);
 	}
 	
 	//TODO list of roles
@@ -81,6 +81,12 @@ public class Person {
 	 */
 	public void setFullName(String firstName, String lastName) {
 		this.fullName = firstName + " " + lastName;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Person [id=" + personId + ", first name=" + firstName + ", last name=" + lastName +", name=" + fullName + ", toString()=" + super.toString() + "]";
 	}
 	
 

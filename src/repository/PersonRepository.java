@@ -14,6 +14,8 @@ public class PersonRepository implements IRepository<Person>{
 		// get by id 
 		String query = "SELECT * FROM person WHERE person_id = " + id; 
 		
+		//select person.*, role.* person_role.*
+		
 		// The resultset
 		ResultSet rs = Database.executeQuery(query);
 		
