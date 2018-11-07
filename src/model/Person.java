@@ -22,6 +22,10 @@ public class Person {
 		this.lastName = lastName;
 		this.fullName = firstName + " " + lastName;
 	}
+	
+	//TODO list of roles
+	//TODO list of requests
+	//TODO list of apartments (holding one or none)
 
 	/**
 	 * @return the personId

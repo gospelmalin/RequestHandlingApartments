@@ -9,7 +9,7 @@ import util.Database;
 public class PersonRepository implements IRepository<Person>{
 
 	@Override
-	public Person get(int id) {
+	public Person get(int id) { //TODO update to include role, apartment, requests...
 		
 		// get by id 
 		String query = "SELECT * FROM person WHERE person_id = " + id; 
