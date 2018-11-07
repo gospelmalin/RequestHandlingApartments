@@ -9,8 +9,10 @@ import javafx.scene.layout.BorderPane;
 //import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Area;
+import model.Person;
 import model.Status;
 import repository.AreaRepository;
+import repository.PersonRepository;
 import repository.StatusRepository;
 
 import java.io.IOException;
@@ -115,6 +117,59 @@ public class Main extends Application {
 		// TEST
 		//StatusRepository sr = new StatusRepository();
 		//AreaRepository ar = new AreaRepository();
+		//PersonRepository pr = new PersonRepository();
+		
+		
+		// TEST ADD person
+		//Person person1 = new Person();
+		//person1.setFirstName("Maria");
+		//person1.setLastName("Gustavsson");
+		//person1.setFullName("Maria", "Gustavsson");
+		//pr.add(person1);
+		//Person person2 = new Person();
+		//person2.setFirstName("Fredrik");
+		//person2.setLastName("Holmberg");
+		//person2.setFullName("Fredrik", "Holmberg");
+		//pr.add(person2);
+		//Person person3 = new Person();
+		//person3.setFirstName("Hans");
+		//person3.setLastName("Johnsson");
+		//person3.setFullName("Hans", "Johnsson");
+		//pr.add(person3);
+		//Person person4 = new Person();
+		//person4.setFirstName("Fia");
+		//person4.setLastName("Gardner");
+		//person4.setFullName("Fia", "Gardner");
+		//pr.add(person4);
+		
+		
+		// TEST GET Person2
+		/*
+		Person person = pr.get(2);
+		System.out.println(person.getPersonId());
+		System.out.println(person.getFirstName());
+		System.out.println(person.getLastName());
+		System.out.println(person.getFullName());
+		System.out.println(pr.get(2).toString());
+		*/
+		
+		// TEST GET ALL Persons and printout
+		//ArrayList<Person> persons = pr.getAll();
+		//persons.forEach(p -> System.out.println(p.toString()));
+		
+		// TEST UPDATE person3
+		//Person person = pr.get(3);
+		//person.setFirstName("Leif");
+		//pr.update(person);
+		
+		// TEST Delete person4
+		//Person person = pr.get(4);
+		//System.out.println(person.getFullName());
+		//pr.remove(person);  
+		  
+		// TEST GET ALL Persons and printout
+		//ArrayList<Person> persons = pr.getAll();
+		//persons.forEach(p -> System.out.println(p.toString()));
 		
 		// TEST ADD status
 		// sr.addStatus("TEST 7");
