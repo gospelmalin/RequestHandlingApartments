@@ -1,11 +1,8 @@
 package repository;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import model.Area;
 import model.Request;
 import util.Database;
 
@@ -139,8 +136,9 @@ public class RequestRepository implements IRepository<Request> {
 	}
 
 	@Override
-	public void remove(Request t) {
-		// TODO Auto-generated method stub
+	public void remove(Request t) { //TODO test method
+		String query = "DELETE FROM request WHERE id=" + t.getRequestId();
+		Database.executeUpdate(query);
 		
 	}
 
