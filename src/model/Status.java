@@ -13,7 +13,7 @@ public class Status {
 		return id;
 	}
 	/**
-	 * @param Set status_id
+	 * @param id status_id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -26,7 +26,7 @@ public class Status {
 		return status;
 	}
 	/**
-	 * @param Set status_description
+	 * @param status status_description
 	 */
 	public void setStatus(String status) {
 		this.status = status;
