@@ -81,11 +81,13 @@ request_date datetime NOT NULL,
 status_id int NOT NULL DEFAULT 1,
 completion_date datetime,
 resolver_id int,
+/*
 CONSTRAINT fk_request_tenant
 	FOREIGN KEY(requester_id) REFERENCES person_request(person_id)
     ON UPDATE RESTRICT,
 CONSTRAINT fk_request_employee
 	FOREIGN KEY(resolver_id) REFERENCES person_request(person_id),
+    */
 CONSTRAINT fk_request_apartment
 	FOREIGN KEY(apartment_id) REFERENCES apartment(apartment_id)
     ON UPDATE RESTRICT,
