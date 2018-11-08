@@ -1,15 +1,18 @@
 package repository;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import model.Area;
 import model.Request;
 import util.Database;
 
 public class RequestRepository implements IRepository<Request> {
 
 	@Override
-	public Request get(int id) {
+	public Request get(int id) { //TODO test this
 	// get by id 
 		String query = "SELECT r.request_id AS " + "'Request id', " + 
 				"(t.first_name + ' ' + t.last_name)"+ " AS "+ "'Reported by',"
@@ -72,8 +75,55 @@ public class RequestRepository implements IRepository<Request> {
 
 	@Override
 	public ArrayList<Request> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT r.request_id AS " + "'Request id', " + 
+				"(t.first_name + ' ' + t.last_name)"+ " AS "+ "'Reported by',"
+				+ "r.request_date AS " + "'Date reported',"
+				+ "a.apartment_no AS " + "'Apartment',"
+				+ "area.area_name AS " + "'Address',"
+				+ "h.house_no AS " + "'House number',"
+				+ "r.request_description AS " + "'Description',"
+				+ "s.status_description AS " + "'Status',"
+				+ "r.completion_date AS " + "'Date completed',"
+				+ "(e.first_name +' ' + e.last_name) " + "'Completed by'"
+		+ " FROM request r INNER JOIN person t"
+		+ " ON t.person_id = r.requester_id"
+		+ " INNER JOIN apartment a"
+		+ " ON a.apartment_id=r.apartment_id"
+		+ " INNER JOIN house h"
+		+ " ON h.house_id = a.house_id"
+		+ " INNER JOIN area area"
+		+ " ON area.area_id=h.area_id"
+		+ " INNER JOIN status s"
+		+ " ON s.status_id=r.status_id"
+		+ " LEFT OUTER JOIN person e"
+		+ " ON e.person_id=r.solver_id"
+		+ " ORDER BY r.request_id, r.apartment_id;"
+		;
+		
+		// The resultset
+		ResultSet rs = Database.executeQuery(query);
+		
+		// Status to return
+		ArrayList<Request> requests = new ArrayList<Request>(); 
+		
+		try {
+			
+			while(rs.next()) {
+				
+				// add area to list
+				requests.add(new Request(rs.getInt("Request id"),rs.getString("Reported by"),rs.getInt("Apartment"), 
+						rs.getString("Address"), rs.getString("House number"),rs.getString("Description"),rs.getString("Status"),
+						rs.getDate("Date reported"), rs.getDate("Date completed"),rs.getString("Completed by")));		 
+			}
+			
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return requests;
 	}
 
 	@Override
