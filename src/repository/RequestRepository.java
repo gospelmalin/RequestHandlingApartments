@@ -9,7 +9,7 @@ import util.Database;
 public class RequestRepository implements IRepository<Request> {
 
 	@Override
-	public Request get(int id) { //TODO test this
+	public Request get(int id) { //TODO check and test this 
 	// get by id 
 		String query = "SELECT r.request_id AS " + "'Request id', " + 
 				"(t.first_name + ' ' + t.last_name)"+ " AS "+ "'Reported by',"
@@ -21,8 +21,10 @@ public class RequestRepository implements IRepository<Request> {
 				+ "s.status_description AS " + "'Status',"
 				+ "r.completion_date AS " + "'Date completed',"
 				+ "(e.first_name +' ' + e.last_name) " + "'Completed by'"
-		+ " FROM request r INNER JOIN person t"
-		+ " ON t.person_id = r.requester_id"
+		+ " FROM request r INNER JOIN person_request tr"
+		+ " ON r.request_id=tr.request_id"
+		+ " INNER JOIN person t" 
+		+ " ON t.person_id = tr.person_id"
 		+ " INNER JOIN apartment a"
 		+ " ON a.apartment_id=r.apartment_id"
 		+ " INNER JOIN house h"
@@ -31,11 +33,14 @@ public class RequestRepository implements IRepository<Request> {
 		+ " ON area.area_id=h.area_id"
 		+ " INNER JOIN status s"
 		+ " ON s.status_id=r.status_id"
+		+ " LEFT OUTER JOIN person_request er"
+		+ " ON r.request_id = er.request_id"
 		+ " LEFT OUTER JOIN person e"
-		+ " ON e.person_id=r.solver_id"
+		+ " ON e.person_id=er.person_id"
 		+ " WHERE request_id = " + id
 		+ " ORDER BY r.request_id, r.apartment_id;"
 		;
+		
 		
 		// The resultset
 		ResultSet rs = Database.executeQuery(query);
@@ -71,7 +76,7 @@ public class RequestRepository implements IRepository<Request> {
 	}
 
 	@Override
-	public ArrayList<Request> getAll() {
+	public ArrayList<Request> getAll() { //TODO test and check
 		String query = "SELECT r.request_id AS " + "'Request id', " + 
 				"(t.first_name + ' ' + t.last_name)"+ " AS "+ "'Reported by',"
 				+ "r.request_date AS " + "'Date reported',"
@@ -82,8 +87,10 @@ public class RequestRepository implements IRepository<Request> {
 				+ "s.status_description AS " + "'Status',"
 				+ "r.completion_date AS " + "'Date completed',"
 				+ "(e.first_name +' ' + e.last_name) " + "'Completed by'"
-		+ " FROM request r INNER JOIN person t"
-		+ " ON t.person_id = r.requester_id"
+		+ " FROM request r INNER JOIN person_request tr"
+		+ " ON r.request_id=tr.request_id"
+		+ " INNER JOIN person t" 
+		+ " ON t.person_id = tr.person_id"
 		+ " INNER JOIN apartment a"
 		+ " ON a.apartment_id=r.apartment_id"
 		+ " INNER JOIN house h"
@@ -92,8 +99,10 @@ public class RequestRepository implements IRepository<Request> {
 		+ " ON area.area_id=h.area_id"
 		+ " INNER JOIN status s"
 		+ " ON s.status_id=r.status_id"
+		+ " LEFT OUTER JOIN person_request er"
+		+ " ON r.request_id = er.request_id"
 		+ " LEFT OUTER JOIN person e"
-		+ " ON e.person_id=r.solver_id"
+		+ " ON e.person_id=er.person_id"
 		+ " ORDER BY r.request_id, r.apartment_id;"
 		;
 		
