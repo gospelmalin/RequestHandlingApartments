@@ -10,6 +10,7 @@ public class StartViewController {
 	 private Button openNewRequestFormBtn;
 	 @FXML
 	 private Button openViewRequestFormBtn;
+
 	 @FXML
 	 private TextArea startMessageConsole;
 	 @FXML
@@ -21,6 +22,12 @@ public class StartViewController {
     private void initialize () {
     	
     }
+	@FXML
+	private void openNewRequestForm(ActionEvent event) {
+        ViewController.activate("RequestView");
+        System.out.println("RequestView should open");
+
+	}
 
     @FXML
     private void openAdminForm(ActionEvent event) {

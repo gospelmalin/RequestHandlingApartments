@@ -1,5 +1,4 @@
-
-
+import controller.ViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,15 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.Area;
-import model.Person;
-import model.Status;
-import repository.AreaRepository;
-import repository.PersonRepository;
-import repository.StatusRepository;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Main extends Application {
 	 //PrimaryStage
@@ -24,6 +16,7 @@ public class Main extends Application {
  
     //BorderPane of RootLayout
     private BorderPane rootLayout;
+    public static Scene scene;
    // private VBox rootLayout;
    // private AnchorPane rootLayout;
  
@@ -56,9 +49,9 @@ public class Main extends Application {
           //  rootLayout = (VBox) loader.load();
            // rootLayout = (AnchorPane) loader.load();
  
-            
+
             //Show the scene holding the root layout.
-            Scene scene = new Scene(rootLayout); //rootLayout sent to scene.
+            scene = new Scene(rootLayout); //rootLayout sent to scene.
             primaryStage.setScene(scene); //Set the scene in primary stage.
  
             /*//Give the controller access to the main.
@@ -72,19 +65,30 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
- 
+
+
     
     //Shows the start view inside the root layout.
   
     public void showStartView() {
+
+
         try {
             //Load StartView from StartView.fxml
             FXMLLoader loader = new FXMLLoader();
-            //loader.setLocation(Main.class.getResource("view/StartView.fxml"));          <--- Har ändrat här för att visa area bilden
-            loader.setLocation(Main.class.getResource("view/AreaView.fxml"));
+            loader.setLocation(Main.class.getResource("view/StartView.fxml"));
+            //loader.setLocation(Main.class.getResource("view/AreaView.fxml"));
             //BorderPane startView = (BorderPane) loader.load();
             AnchorPane startView = (AnchorPane) loader.load();
- 
+
+
+            //Skapa en instans av ViewController som kommer hÃ¥lla olika views. Vi behÃ¶ver scene som Ã¤r "grunden" av vyn
+            ViewController viewcontroller = new ViewController(scene);
+            //Add all the views we want in our project here
+            viewcontroller.addScreen("RequestView", FXMLLoader.load(getClass().getResource( "view/RequestViewLayout.fxml" ))); //Namn + location
+
+
+            //ViewControllers(scene);
             // Set Start view into the center of root layout.
             rootLayout.setCenter(startView);
             //rootLayout.set(startView);
@@ -174,7 +178,7 @@ public class Main extends Application {
 		// TEST ADD status
 		// sr.addStatus("TEST 7");
 		// Area area = new Area();
-		// area.setName("Sjögatan");
+		// area.setName("Sjï¿½gatan");
 		// ar.add(area);
 		
 		// TEST GET Status 1
