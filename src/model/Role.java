@@ -1,3 +1,4 @@
+package model;
 class Role {
 
     //Fields
@@ -7,11 +8,11 @@ class Role {
     /**
      * @return Get role_id
      */
-    public int getRole_id {
-        return id;
+    public int getRole_id() {
+        return role_id;
     }
     /**
-     * @param  Set role_id
+     * @param  role_id role_id
      */
     public void setRole_id(int role_id) {
         this.role_id = role_id;
@@ -24,7 +25,7 @@ class Role {
     }
 
     /**
-     * @param  Set role_description, Tenant or Employee
+     * @param  role_description role_description, Tenant or Employee
      */
     public void setRole_description(String role_description) {
         this.role_description = role_description;
