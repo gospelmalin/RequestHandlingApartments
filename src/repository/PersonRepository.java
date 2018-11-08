@@ -14,6 +14,8 @@ public class PersonRepository implements IRepository<Person>{
 		// get by id 
 		String query = "SELECT * FROM person WHERE person_id = " + id; 
 		
+		//select person.*, role.* person_role.*
+		
 		// The resultset
 		ResultSet rs = Database.executeQuery(query);
 		
@@ -90,7 +92,7 @@ public class PersonRepository implements IRepository<Person>{
 	@Override
 	public void remove(Person t) {
 		
-		String query = "DELETE FROM person WHERE id=" + t.getPersonId();
+		String query = "DELETE FROM person WHERE person_id=" + t.getPersonId();
 		Database.executeUpdate(query);
 		
 	}
