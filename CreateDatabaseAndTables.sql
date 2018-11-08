@@ -58,13 +58,13 @@ status_description varchar(20) NOT NULL
 
 CREATE TABLE request(
 request_id int AUTO_INCREMENT PRIMARY KEY, 
-requester_id int NOT NULL,
+/*requester_id int NOT NULL,*/
 apartment_id int NOT NULL,
 request_description mediumtext NOT NULL,
 request_date datetime NOT NULL,
 status_id int NOT NULL,
 completion_date datetime,
-solver_id int,
+/*solver_id int,*/
 /*FOREIGN KEY(requester_id) REFERENCES person_request(person_id),*/
 FOREIGN KEY(apartment_id) REFERENCES apartment(apartment_id),
 FOREIGN KEY(status_id) REFERENCES status(status_id)
