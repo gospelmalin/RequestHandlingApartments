@@ -3,9 +3,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-//import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-//import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -85,10 +83,11 @@ public class Main extends Application {
             ViewController viewcontroller = new ViewController(scene);
             //Add all the views we want in our project here
             viewcontroller.addScreen("RequestView", FXMLLoader.load(getClass().getResource( "view/RequestViewLayout.fxml" ))); //Name + location
-            viewcontroller.addScreen("AreaView", FXMLLoader.load(getClass().getResource( "view/AreaView.fxml" )));
+            viewcontroller.addScreen("DistrictView", FXMLLoader.load(getClass().getResource( "view/DistrictView.fxml" )));
             viewcontroller.addScreen("AddRequest", FXMLLoader.load(getClass().getResource( "view/AddRequestLayout.fxml" )));
             viewcontroller.addScreen("AdminForm", FXMLLoader.load(getClass().getResource( "view/AdminFormView.fxml" )));
             viewcontroller.addScreen("EditRequest", FXMLLoader.load(getClass().getResource( "view/EditRequestLayout.fxml" )));
+           
 
             //ViewControllers(scene);
             // Set Start view into the center of root layout.
@@ -122,7 +121,7 @@ public class Main extends Application {
 		
 		// TEST
 		//StatusRepository sr = new StatusRepository();
-		//AreaRepository ar = new AreaRepository();
+		//DistrictRepository dr = new DistrictRepository();
 		//PersonRepository pr = new PersonRepository();
 		
 		
@@ -179,18 +178,18 @@ public class Main extends Application {
 		
 		// TEST ADD status
 		// sr.addStatus("TEST 7");
-		// Area area = new Area();
-		// area.setName("Sj�gatan");
-		// ar.add(area);
+		// District district = new District();
+		// district.setName("Strandgatan");
+		// dr.add(district);
 		
 		// TEST GET Status 1
 		// Status status = sr.getStatus(2);
 		// System.out.println(status.getStatus());
-		// System.out.println(ar.get(2).toString());
+		// System.out.println(sr.get(2).toString());
 		
-		// TEST GET ALL Areas and printout
-		// ArrayList<Area> areas = ar.getAll();
-		// areas.forEach(a -> System.out.println(a.toString()));
+		// TEST GET ALL Districts and printout
+		// ArrayList<District> districts = dr.getAll();
+		// districts.forEach(d -> System.out.println(d.toString()));
 
 		launch(args);
 

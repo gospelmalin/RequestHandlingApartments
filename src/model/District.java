@@ -1,13 +1,13 @@
 package model;
 
-public class Area {
+public class District {
 	
 	private int id;
 	private String name;
 	
 	
-	public Area() {}
-	public Area(int id, String name) {
+	public District() {}
+	public District(int id, String name) {
 		setId(id);
 		setName(name);
 	}
@@ -26,7 +26,7 @@ public class Area {
 	}
 	@Override
 	public String toString() {
-		return "Area [id=" + id + ", name=" + name + ", toString()=" + super.toString() + "]";
+		return "District [id=" + id + ", name=" + name + ", toString()=" + super.toString() + "]";
 	}
 	
 	
