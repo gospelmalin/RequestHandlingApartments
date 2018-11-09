@@ -27,7 +27,7 @@ public class AddRequestController {
 	//On init we populate the list with the apartments.
 	@FXML
 	private void initialize () {
-		/*
+
 		//Create a arraylist
 		ArrayList<String> getList = new ArrayList<String>();
 		//Grab the repository
@@ -36,7 +36,7 @@ public class AddRequestController {
 		ObservableList<String> apartmentlist = FXCollections.observableArrayList(getList);
 		selectApartment.setItems(apartmentlist);
 		System.out.println("List: " + apartmentlist);
-		*/
+
 	}
 
 	@FXML

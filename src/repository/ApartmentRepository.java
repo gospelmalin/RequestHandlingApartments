@@ -54,7 +54,7 @@ public class ApartmentRepository implements IRepository<Apartment> {
         try {
             while(rs.next()) {
                 // add Apartment to list
-                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_id")));
+                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no")));
             }
             rs.close();
 
@@ -62,6 +62,12 @@ public class ApartmentRepository implements IRepository<Apartment> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+
+        if(apartment.isEmpty()) {
+            System.out.println("Empty! I most likely did not get any data");
+        }
+        System.out.println(" Apartments " + apartment.toArray().toString());
         return apartment;
     }
 
