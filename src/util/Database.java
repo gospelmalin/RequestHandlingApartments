@@ -10,9 +10,9 @@ import java.sql.Statement;
 public class Database {
 	
 	private static final String DATABASE = "requesthandling";
-	private static final String CONN_STR = "jdbc:mariadb://192.168.1.83:3306/" + DATABASE;
-	private static final String USER = "yhAdmin";
-	private static final String PWD = "yhsipi17";
+	private static final String CONN_STR = "jdbc:mariadb://192.168.10.249:3306/" + DATABASE;
+	private static final String USER = "jocke";
+	private static final String PWD = "123123";
 	
 	//Connection
     private static Connection conn = null;
