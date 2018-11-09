@@ -1,13 +1,32 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Person {
 	
 	private int personId;
 	private String firstName;
 	private String lastName;
 	private String fullName;
+	private Apartment currentApartment;
+	
+	private ArrayList<Role> rolesForPerson = new ArrayList<Role>();
+	private ArrayList<Request> requestsbyPerson = new ArrayList<Request>();
+	
+	
 	
 	public Person() {}
+
+	public Person(int personId, String firstName, String lastName, String fullName, Apartment currentApartment,
+			ArrayList<Role> rolesForPerson, ArrayList<Request> requestsbyPerson) {
+		this.personId = personId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.fullName = fullName;
+		this.currentApartment = currentApartment;
+		this.rolesForPerson = rolesForPerson;
+		this.requestsbyPerson = requestsbyPerson;
+	}
 
 	public Person(int personId, String firstName, String lastName, String fullName) {
 		this.personId = personId;
@@ -23,9 +42,28 @@ public class Person {
 		setFullName(firstName, lastName);
 	}
 	
-	//TODO list of roles
-	//TODO list of requests
-	//TODO list of apartments (holding one or none)
+	
+	public ArrayList<Role> getRolesForPerson() {
+		return rolesForPerson;
+	}
+
+	public void setRolesForPerson(ArrayList<Role> rolesForPerson) {
+		this.rolesForPerson = rolesForPerson;
+	}
+
+	public ArrayList<Request> getRequestsbyPerson() {
+		return requestsbyPerson;
+	}
+
+	public void setRequestsbyPerson(ArrayList<Request> requestsbyPerson) {
+		this.requestsbyPerson = requestsbyPerson;
+	}
+
+	
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
 	/**
 	 * @return the personId
@@ -83,6 +121,14 @@ public class Person {
 		this.fullName = firstName + " " + lastName;
 	}
 
+
+	public Apartment getCurrentApartment() {
+		return currentApartment;
+	}
+
+	public void setCurrentApartment(Apartment currentApartment) {
+		this.currentApartment = currentApartment;
+	}
 
 	@Override
 	public String toString() {
