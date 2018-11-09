@@ -6,25 +6,25 @@ import java.util.HashMap;
 
 /*
 
-Controller fil för att hantera våra övriga controllers
+Controller to handle the other controllers
  */
 
 public class ViewController {
 
-        private static HashMap<String, Pane> screenHolder = new HashMap<>(); //Hashmap som håller alla layouts med ett namn + plats där resursen finns
-        private static Scene main; //Huvudscenen Rootlayout
+        private static HashMap<String, Pane> screenHolder = new HashMap<>(); //Hashmap holding all layouts with name and location of each resource
+        private static Scene main; //The main scene Rootlayout
 
-        //Konstruktor
+        //constructor
         public ViewController(Scene main) {
             this.main = main;
         }
 
-        //Lägga till i listan
+        //Add to list
         public void addScreen(String name, Pane pane){
             screenHolder.put(name, pane);
         }
 
-        //Aktivera layout
+        //Activate layout
         public static void activate(String name){
             main.setRoot( screenHolder.get(name) );
         }
