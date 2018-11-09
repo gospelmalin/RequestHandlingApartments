@@ -61,5 +61,8 @@ public class Apartment {
 		this.houseId = houseId;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Apartment [Apartmentid=" + apartmentId + ", apartmentNo=" + apartmentNo + ", houseId=" + houseId + ", toString()=" + super.toString() + "]";
+	}
 }
