@@ -81,12 +81,14 @@ public class Main extends Application {
             //BorderPane startView = (BorderPane) loader.load();
             AnchorPane startView = (AnchorPane) loader.load();
 
-
-            //Skapa en instans av ViewController som kommer hålla olika views. Vi behöver scene som är "grunden" av vyn
+            //Create an instance of ViewController to hold the different views. We need Scene which is the "foundation" of the view
             ViewController viewcontroller = new ViewController(scene);
             //Add all the views we want in our project here
-            viewcontroller.addScreen("RequestView", FXMLLoader.load(getClass().getResource( "view/RequestViewLayout.fxml" ))); //Namn + location
-
+            viewcontroller.addScreen("RequestView", FXMLLoader.load(getClass().getResource( "view/RequestViewLayout.fxml" ))); //Name + location
+            viewcontroller.addScreen("AreaView", FXMLLoader.load(getClass().getResource( "view/AreaView.fxml" )));
+            viewcontroller.addScreen("AddRequest", FXMLLoader.load(getClass().getResource( "view/AddRequestLayout.fxml" )));
+            viewcontroller.addScreen("AdminForm", FXMLLoader.load(getClass().getResource( "view/AdminFormView.fxml" )));
+            viewcontroller.addScreen("EditRequest", FXMLLoader.load(getClass().getResource( "view/EditRequestLayout.fxml" )));
 
             //ViewControllers(scene);
             // Set Start view into the center of root layout.
