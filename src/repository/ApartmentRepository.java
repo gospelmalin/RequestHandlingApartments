@@ -64,10 +64,11 @@ public class ApartmentRepository implements IRepository<Apartment> {
         }
 
 
+        //Test apartment.add(new Apartment(1, 1));
         if(apartment.isEmpty()) {
             System.out.println("Empty! I most likely did not get any data");
         }
-        System.out.println(" Apartments " + apartment.toArray().toString());
+        System.out.println(" Apartments " + apartment.toString());
         return apartment;
     }
 
