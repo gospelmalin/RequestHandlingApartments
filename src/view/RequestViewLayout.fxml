@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RequestViewController">
    <children>
       <Group layoutX="2.0" layoutY="164.0">
          <children>
@@ -63,11 +62,11 @@
       </Group>
       <Button fx:id="requestInformationSubmitButton" layoutX="181.0" layoutY="155.0" mnemonicParsing="false" text="Submit" />
       <Label layoutX="14.0" layoutY="111.0" text="Number of results to show" />
-      <TextField fx:id="numberOfResultsText" layoutX="13.0" layoutY="128.0" prefHeight="25.0" prefWidth="183.0" promptText="Enter number of results to show" />
+      <TextField fx:id="numberOfResultsText" layoutX="13.0" layoutY="128.0" onAction="#setLimitBy" prefHeight="25.0" prefWidth="183.0" promptText="Enter number of results to show" />
       <TextField fx:id="requestIdText" layoutX="341.0" layoutY="49.0" promptText="Enter request id" />
       <Label layoutX="281.0" layoutY="50.0" text="Request id" />
-      <Button layoutX="341.0" layoutY="86.0" mnemonicParsing="false" text="Show selected request" />
-      <Button layoutX="522.0" layoutY="86.0" mnemonicParsing="false" text="Edit selected request" />
+      <Button fx:id="showSelectedRequestBtn" layoutX="341.0" layoutY="86.0" mnemonicParsing="false" onAction="#showSelectedRequest" text="Show selected request" />
+      <Button fx:id="showEditSelectedRequestBtn" layoutX="522.0" layoutY="86.0" mnemonicParsing="false" onAction="#showEditSelectedRequest" text="Edit selected request" />
       <Separator layoutX="251.0" layoutY="47.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="10.0" />
       <Label layoutX="247.0" layoutY="90.0" text="OR" />
       <Separator layoutX="502.0" layoutY="47.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="10.0" />

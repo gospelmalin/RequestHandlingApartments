@@ -6,19 +6,19 @@ public class Request {
 //TODO
 	
 	private int requestId;
-	//private int requesterId;
+	private int requesterId;
 	private String reportedBy;
 	private Date requestDate; //TODO type?
-	//private int apartmentId;
+	private int apartmentId;
 	private String address;
 	private String houseNo;
 	private int apartmentNo;
 	private String district;
 	private String description;
 	private String status;
-	//private int statusId;
+	private int statusId;
 	private Date completionDate; //TODO type?
-	//private int solverId;
+	private int solverId;
 	private String completedBy;
 	
 	public Request() {}
@@ -38,6 +38,38 @@ public class Request {
 		this.completionDate = completionDate;
 		this.completedBy = completedBy;
 	}
+
+
+	public Request(int requestId, int requesterId, String reportedBy, Date requestDate, int apartmentId, String address,
+			String houseNo, int apartmentNo, String district, String description, String status, int statusId,
+			Date completionDate, int solverId, String completedBy) {
+		this.requestId = requestId;
+		this.requesterId = requesterId;
+		this.reportedBy = reportedBy;
+		this.requestDate = requestDate;
+		this.apartmentId = apartmentId;
+		this.address = address;
+		this.houseNo = houseNo;
+		this.apartmentNo = apartmentNo;
+		this.district = district;
+		this.description = description;
+		this.status = status;
+		this.statusId = statusId;
+		this.completionDate = completionDate;
+		this.solverId = solverId;
+		this.completedBy = completedBy;
+	}
+
+
+	public Request(int requestId, int requesterId, String reportedBy, Date requestDate) {
+		this.requestId = requestId;
+		this.requesterId = requesterId;
+		this.reportedBy = reportedBy;
+		this.requestDate = requestDate;
+	}
+
+
+	
 
 
 	/**
@@ -214,6 +246,70 @@ public class Request {
 	public void setCompletedBy(String completedBy) {
 		this.completedBy = completedBy;
 	}
+
+	/**
+	 * @return the requesterId
+	 */
+	public int getRequesterId() {
+		return requesterId;
+	}
+
+
+	/**
+	 * @param requesterId the requesterId to set
+	 */
+	public void setRequesterId(int requesterId) {
+		this.requesterId = requesterId;
+	}
+
+
+	/**
+	 * @return the apartmentId
+	 */
+	public int getApartmentId() {
+		return apartmentId;
+	}
+
+
+	/**
+	 * @param apartmentId the apartmentId to set
+	 */
+	public void setApartmentId(int apartmentId) {
+		this.apartmentId = apartmentId;
+	}
+
+
+	/**
+	 * @return the statusId
+	 */
+	public int getStatusId() {
+		return statusId;
+	}
+
+
+	/**
+	 * @param statusId the statusId to set
+	 */
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
+	}
+
+
+	/**
+	 * @return the solverId
+	 */
+	public int getSolverId() {
+		return solverId;
+	}
+
+
+	/**
+	 * @param solverId the solverId to set
+	 */
+	public void setSolverId(int solverId) {
+		this.solverId = solverId;
+	}
+
 
 	@Override
 	public String toString() {

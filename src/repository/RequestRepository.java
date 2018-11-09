@@ -4,11 +4,14 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import model.Apartment;
+import model.Person;
 import model.Request;
 import util.Database;
 
 public class RequestRepository implements IRepository<Request> {
-
+	
 	@Override
 	public Request get(int id) { //TODO check and test this 
 	// get by id 
@@ -42,7 +45,7 @@ public class RequestRepository implements IRepository<Request> {
 		// The resultset
 		ResultSet rs = Database.executeQuery(query);
 		
-		// Status to return
+		// Request to return
 		Request request = new Request();
 		
 		try {
@@ -72,7 +75,8 @@ public class RequestRepository implements IRepository<Request> {
 	
 		return request;
 	}
-
+	
+	
 	@Override
 	public ArrayList<Request> getAll() { //TODO test and check
 		String query = "SELECT r.request_id AS " + "'Request id', " + 
@@ -111,7 +115,7 @@ public class RequestRepository implements IRepository<Request> {
 			
 			while(rs.next()) {
 				
-				// add area to list
+				// add request to list
 				requests.add(new Request(rs.getInt("Request id"),rs.getString("Reported by"),rs.getDate("Date reported"), 
 						rs.getString("Address"), rs.getString("House number"),rs.getInt("Apartment"),rs.getString("District"), 
 						rs.getString("Description"),rs.getString("Status"),
@@ -128,29 +132,83 @@ public class RequestRepository implements IRepository<Request> {
 		return requests;
 	}
 
+	
 	@Override
 	public void add(Request t) {
-		// TODO Auto-generated method stub
+		//
+		// connect to db
+		
+	//	Database.dbConnect(); //Database need to be public
+    	//
+
+		PersonRepository pr = new PersonRepository();
+		
+		String query ="INSERT INTO request(requester_id, apartment_id, "
+				+ "request_description, request_date) VALUES(?, ?, ?, ?)";
+		String fullname = t.getReportedBy();
+		String houseNo = t.getHouseNo();
+		int apartmentNo = t.getApartmentNo();
+		Person person = new Person();
+		//System.out.println("Fullname: "+ fullname + " HouseNo: " + houseNo + " ApartmentNo: " + apartmentNo); //TODO temp
+		person=	pr.getPersonByFullName(fullname, houseNo, apartmentNo);
+		
+		Apartment ap = person.getCurrentApartment();
+		int personIdFromPerson = person.getPersonId();
+		int apartmentIdFromPerson = ap.getApartmentId();
+		String descriptionFromPerson = t.getDescription();
+		Date requestDateFromPerson = t.getRequestDate();
+	/*	System.out.println("personIdFromPerson: " + personIdFromPerson + 
+				" apartmentIdFromPerson: " + apartmentIdFromPerson + 
+				" descriptionFromPerson: "+ descriptionFromPerson);*/
+		
+		//TODO way forward? This works if database is public
+		
 		/*
-		 insert into request(
-	requester_id,
-	apartment_id, 
-    request_description, 
-    request_date, 
-    status_id, 
-    completion_date,
-    resolver_id
-    )
-	values(
-    ?,
-    ?, 
-    ?, 
-    ?, 
-    3, 
-    ?,
-    ?
-    );
-		 */
+		ArrayList<Object> values = new ArrayList<>();
+		Object obj1 =((Object) person.getPersonId()); // requester_id
+		Object obj2 =((Object) ap.getApartmentId()); // apartment_id
+		Object obj3 =((Object) t.getDescription());
+		Object obj4 =((Object) t.getRequestDate());
+		
+		
+		values.add(1, obj1);
+		values.add(2, obj2);
+		values.add(3, obj3);
+		values.add(4, obj4);
+		*/
+		// do querying
+		//System.out.println("First one: " + "INSERT INTO request(requester_id, apartment_id, "
+		//		+ "request_description, request_date) VALUES(" + personIdFromPerson +","+ apartmentIdFromPerson+", '"+ descriptionFromPerson+"',"+ requestDateFromPerson+");");//TODO temp
+		
+		
+		
+		/*
+		try {
+			
+			PreparedStatement prepStatement = conn.prepareStatement(query);
+			//TODO read arraylist
+			prepStatement.setInt(1, personIdFromPerson);
+			prepStatement.setInt(2, apartmentIdFromPerson);
+			prepStatement.setString(3, descriptionFromPerson);
+			//prepStatement.setDate(4, requestDateFromPerson) ;
+			prepStatement.setDate(4, getCurrentDate());
+			//int rows = prepStatement.executeUpdate();
+			prepStatement.executeUpdate();
+			//System.out.println(prepStatement); 
+			//System.out.println("INSERT INTO request(requester_id, apartment_id, "
+			//		+ "request_description, request_date) VALUES(" + person.getPersonId() +","+ ap.getApartmentId()+","+ t.getDescription()+","+ "2018-11-09"+");");//TODO temp
+			prepStatement.executeQuery();
+			prepStatement.close();
+			
+		} catch (SQLException e1) {
+			System.err.println("An SQL exception occured when while executing query " + e1.getMessage());
+		} catch (NullPointerException e) {
+			System.err.println("A null pointer exception occured " + e.getMessage());
+		}
+		*/
+		// close db
+	//	Database.dbClose(); //Database need to be public
+		
 	}
 
 	@Override
@@ -166,4 +224,12 @@ public class RequestRepository implements IRepository<Request> {
 		
 	}
 
+	
+	//method to return current date, and convert it java.sql.Date
+		private static java.sql.Date getCurrentDate() {
+		    java.util.Date today = new java.util.Date();
+		    return new java.sql.Date(today.getTime());
+		}
+
+	
 }
