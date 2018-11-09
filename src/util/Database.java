@@ -2,7 +2,6 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +19,6 @@ public class Database {
     
     //Connect to DB
     private static void dbConnect() {
-    
     	try {
 			conn = DriverManager.getConnection( CONN_STR,USER,PWD);
 		} catch (SQLException e) {
@@ -30,7 +28,7 @@ public class Database {
     
     
   //Close Connection
-    private static void dbClose() {
+   private static void dbClose() {
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.close();
@@ -76,7 +74,7 @@ public class Database {
     	dbConnect();
 
     	// do querying
-    	// TODO Change to preparedstatment
+    	// TODO Change to prepared statement. How?
 		try {
 			Statement stmt = conn.createStatement();
 			stmt.executeQuery(query);
@@ -90,4 +88,30 @@ public class Database {
 		dbClose();
 		
     }
+    
+    //How to do this?
+    /*
+    //DB Execute Update PreparedStatement (For Update/Insert/Delete) Operation
+    public static void executeUpdatePreparedStatement(String query, ArrayList<Object> values) {
+
+    	// connect to db
+    	dbConnect();
+
+    	// do querying
+    	
+		try {
+			PreparedStatement prepStatement = conn.prepareStatement(query);
+			//TODO read arraylist
+			prepStatement.executeQuery();
+			prepStatement.close();
+			
+		} catch (SQLException e) {
+			System.err.println("An SQL exception occured when while executing query " + e);
+		}
+		
+		// close db
+		dbClose();
+		
+    }
+    */
 }

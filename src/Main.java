@@ -5,8 +5,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Request;
+import repository.RequestRepository;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.Calendar;
 
 public class Main extends Application {
 	 //PrimaryStage
@@ -190,6 +194,16 @@ public class Main extends Application {
 		// TEST GET ALL Districts and printout
 		// ArrayList<District> districts = dr.getAll();
 		// districts.forEach(d -> System.out.println(d.toString()));
+		
+		//RequestRepository rr = new RequestRepository();
+		//Calendar currenttime = Calendar.getInstance();
+	   // Date sqldate = new Date((currenttime.getTime()).getTime());
+		//Date sqldate = new java.sql.Date(currenttime.getTime());
+		//System.out.println(sqldate);
+	    
+		//Request req = new Request(1, 2,"'Rico Medina'", sqldate, 1,"Duck Creek Road", "10A", 25, "Duck Creek", "Something wrong in this world", "Completed", 3, sqldate, 9,"Cameron Delae");
+		
+		//rr.add(req);
 
 		launch(args);
 
