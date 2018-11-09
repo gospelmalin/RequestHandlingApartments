@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RequestController">
    <children>
       <Button layoutX="504.0" layoutY="225.0" mnemonicParsing="false" text="Submit" />
       <TextArea layoutX="30.0" layoutY="295.0" prefHeight="91.0" prefWidth="543.0" />
       <Label layoutX="30.0" layoutY="278.0" text="Message console" />
       <TextField layoutX="27.0" layoutY="85.0" promptText="Enter first name" />
       <TextField layoutX="186.0" layoutY="85.0" promptText="Enter last name" />
-      <ChoiceBox layoutX="348.0" layoutY="85.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="349.0" layoutY="85.0" prefWidth="150.0" />
       <Label layoutX="348.0" layoutY="68.0" text="Apartment" />
       <Label layoutX="27.0" layoutY="68.0" text="First name" />
       <Label layoutX="186.0" layoutY="68.0" text="Last name" />
@@ -27,5 +26,6 @@
             <Font size="26.0" />
          </font>
       </Label>
+      <Button id="goHome" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
    </children>
 </AnchorPane>

@@ -2,6 +2,7 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -69,5 +70,12 @@ public class DistrictController{
 		ObservableList<District> list = FXCollections.observableArrayList(dr.getAll());
 		districtTable.setItems((ObservableList<District>) list);
     }
+
+	//Go back to home screen
+	@FXML
+	public void goHome(ActionEvent actionEvent) {
+
+		ViewController.activate("StartView");
+	}
 
 }
