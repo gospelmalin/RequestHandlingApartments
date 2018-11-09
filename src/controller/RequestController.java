@@ -9,13 +9,10 @@ public class RequestController {
 //TODO
 	
 	public void openAddNewRequest(ActionEvent actionEvent) {
-		String location = "view/StartView.fxml";
-		//FXMLLoader loader = new FXMLLoader();
-       // loader.setLocation(Main.class.getResource(location));
-        //AnchorPane view = (AnchorPane) loader.load();
+		//TODO
 	}
 	
 	public void openViewRequests(ActionEvent actionevent) {
-		
+		//TODO
 	}
 }

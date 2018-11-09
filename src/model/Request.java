@@ -8,13 +8,14 @@ public class Request {
 	private int requestId;
 	//private int requesterId;
 	private String reportedBy;
+	private Date requestDate; //TODO type?
 	//private int apartmentId;
-	private int apartmentNo;
 	private String address;
 	private String houseNo;
+	private int apartmentNo;
+	private String district;
 	private String description;
 	private String status;
-	private Date requestDate; //TODO type?
 	//private int statusId;
 	private Date completionDate; //TODO type?
 	//private int solverId;
@@ -22,17 +23,18 @@ public class Request {
 	
 	public Request() {}
 
-	
-	public Request(int requestId, String reportedBy, int apartmentNo, String address, String houseNo,
-			String description, String status, Date requestDate, Date completionDate, String completedBy) {
+
+	public Request(int requestId, String reportedBy, Date requestDate, String address, String houseNo, int apartmentNo,
+			String district, String description, String status, Date completionDate, String completedBy) {
 		this.requestId = requestId;
 		this.reportedBy = reportedBy;
-		this.apartmentNo = apartmentNo;
+		this.requestDate = requestDate;
 		this.address = address;
 		this.houseNo = houseNo;
+		this.apartmentNo = apartmentNo;
+		this.district = district;
 		this.description = description;
 		this.status = status;
-		this.requestDate = requestDate;
 		this.completionDate = completionDate;
 		this.completedBy = completedBy;
 	}
@@ -83,6 +85,22 @@ public class Request {
 	 */
 	public void setApartmentNo(int apartmentNo) {
 		this.apartmentNo = apartmentNo;
+	}
+
+
+	/**
+	 * @return the district
+	 */
+	public String getDistrict() {
+		return district;
+	}
+
+
+	/**
+	 * @param district the district to set
+	 */
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
 
