@@ -99,7 +99,7 @@ public class PersonRepository implements IRepository<Person>{
 		
 	}
 
-	//TODO 
+	
 	public Person getPersonByFullName(String fullname, String houseNo, int apartmentNo) {
 		String query ="SELECT p.person_id AS " + "'Person id', "
 				+ "CONCAT(p.first_name, " +"' '" + ", p.last_name)" + " AS " + "'Full name',"
@@ -117,9 +117,10 @@ public class PersonRepository implements IRepository<Person>{
 				+ "	INNER JOIN house h"
 				+ "	ON h.house_id = a.house_id" 
 				+ "	WHERE CONCAT(p.first_name," +  "' '" + ", p.last_name)= " + fullname
-				+ "	AND h.house_no = " + houseNo
+				+ "	AND h.house_no = " + "'"+ houseNo + "'"
 				+ " AND a.apartment_no= " + apartmentNo
 				+ "	; ";
+		//System.out.println("QUery from PR: "+ query); //TODO temp
 		
 		// The resultset
 			ResultSet rs = Database.executeQuery(query);
@@ -138,7 +139,6 @@ public class PersonRepository implements IRepository<Person>{
 			person.setFirstName(rs.getString("First name"));
 			person.setLastName(rs.getString("Last name"));
 			person.setFullName(rs.getString("Full name"));
-			person.setFullName(rs.getString("Full name"));
 			
 			Apartment currentApartment = new Apartment((rs.getInt("Apartment id")), (rs.getInt("Apartment")),(rs.getInt("House id")) );
 			person.setCurrentApartment(currentApartment);
@@ -146,7 +146,7 @@ public class PersonRepository implements IRepository<Person>{
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.err.println("An SQL exception occured when while executing query getPersonByFullName " + e.getMessage());
 			e.printStackTrace();
 		}
 	
