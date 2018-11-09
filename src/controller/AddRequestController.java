@@ -9,12 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
+import model.Apartment;
 import repository.ApartmentRepository;
 
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class RequestController {
+public class AddRequestController {
 //TODO
 
 	//Select the apartment from a list
@@ -26,12 +27,16 @@ public class RequestController {
 	//On init we populate the list with the apartments.
 	@FXML
 	private void initialize () {
-		/*ArrayList<String> getList = new ArrayList<String>();
+		/*
+		//Create a arraylist
+		ArrayList<String> getList = new ArrayList<String>();
+		//Grab the repository
 		ApartmentRepository apartments = new ApartmentRepository();
-		//getList.add(apartments.getAll());
+		getList.add(apartments.getAll().toString());
 		ObservableList<String> apartmentlist = FXCollections.observableArrayList(getList);
 		selectApartment.setItems(apartmentlist);
-		System.out.println("List: " + apartmentlist);*/
+		System.out.println("List: " + apartmentlist);
+		*/
 	}
 
 	@FXML

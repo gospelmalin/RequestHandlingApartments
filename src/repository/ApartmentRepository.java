@@ -49,25 +49,20 @@ public class ApartmentRepository implements IRepository<Apartment> {
         ResultSet rs = Database.executeQuery(query);
 
         // Status to return
-        ArrayList<Apartment> Apartment = new ArrayList<Apartment>();
+        ArrayList<Apartment> apartment = new ArrayList<Apartment>();
 
         try {
-
             while(rs.next()) {
-
-                // add district to list
-                Apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_id")));
-
+                // add Apartment to list
+                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_id")));
             }
-
             rs.close();
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        return Apartment;
+        return apartment;
     }
 
     @Override
