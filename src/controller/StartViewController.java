@@ -24,16 +24,20 @@ public class StartViewController {
     }
 	@FXML
 	private void openNewRequestForm(ActionEvent event) {
-        ViewController.activate("RequestView");
-        System.out.println("RequestView should open");
+        ViewController.activate("AddRequest");
+        System.out.println("(Add)RequestView should open");
 
 	}
 
     @FXML
     private void openAdminForm(ActionEvent event) {
-    	//TODO
+    	ViewController.activate("AdminForm");
     	System.out.println("openAdminForm should open");
     }
     
-    
+    @FXML
+    private void openViewRequests(ActionEvent event) {
+    	 ViewController.activate("RequestView");
+    	System.out.println("openViewRequestsForm should open");
+    }
 }

@@ -17,7 +17,7 @@
          </font>
       </Label>
       <Button fx:id="openNewRequestFormBtn" layoutX="20.0" layoutY="98.0" mnemonicParsing="false" onAction="#openNewRequestForm" text="Add new request" />
-      <Button fx:id="openViewRequestsFormBtn" layoutX="20.0" layoutY="149.0" mnemonicParsing="false" text="View request(s)" />
+      <Button fx:id="openViewRequestsFormBtn" layoutX="20.0" layoutY="149.0" mnemonicParsing="false" onAction="#openViewRequests" text="View request(s)" />
       <Label layoutX="20.0" layoutY="62.0" text="What do you want to do?">
          <font>
             <Font size="18.0" />
