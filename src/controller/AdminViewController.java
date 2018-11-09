@@ -34,52 +34,53 @@ public class AdminViewController {
     //This method is automatically called after the fxml file has been loaded.
     @FXML
     private void initialize () {
-    	
+    	//TODO
     }
 	@FXML
 	private void openNewRequestForm(ActionEvent event) {
-        ViewController.activate("RequestView");
+		ViewController.activate("AddRequest");
         System.out.println("RequestView should open");
-
 	}
-
-    @FXML
-    private void openAdminForm(ActionEvent event) {
-    	//TODO
-    	System.out.println("openAdminForm should open");
-    }
     
     @FXML
-    private void openEditRequestForm(){
-    	//TODO
+    private void openEditRequestForm(ActionEvent event){
+    	ViewController.activate("EditRequest");
+    	System.out.println("EditRequest should open");
     }
     @FXML
-    private void openViewRequestsForm(){
-    	//TODO
+    private void openViewRequestsForm(ActionEvent event){
+    	ViewController.activate("RequestView");
+    	System.out.println("ViewRequests should open");
     }
 	@FXML
-    private void openViewEditStatusForm(){
+    private void openViewEditStatusForm(ActionEvent event){
 		//TODO
+		System.out.println("ViewEditStatus should open");
 	}
 	@FXML
-    private void openViewEditPersonForm(){
+    private void openViewEditPersonForm(ActionEvent event){
 		//TODO	
+		System.out.println("ViewEditPerson should open");
 	}
 	@FXML
-    private void openViewEditAreaForm(){
-		//TODO
+    private void openViewEditDistrictForm(ActionEvent event){
+		ViewController.activate("DistrictView"); //TODO
+		System.out.println("ViewEditDistrict should open");
 	}
 	@FXML
-    private void openViewEditHouseForm(){
+    private void openViewEditHouseForm(ActionEvent event){
 		//TODO
+		System.out.println("ViewEditHouse should open");
 	}
 	@FXML
-    private void openViewEditRolesForm(){
+    private void openViewEditRolesForm(ActionEvent event){
 		//TODO
+		System.out.println("ViewEditRoles should open");
 	}
 	@FXML
-    private void openViewEditApartmentForm() {
+    private void openViewEditApartmentForm(ActionEvent event) {
 		//TODO
+		System.out.println("ViewEditApartment should open");
 	}
     		
 }

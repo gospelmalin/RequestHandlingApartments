@@ -25,7 +25,7 @@
       <ChoiceBox fx:id="selectRequestIdChoice" layoutX="14.0" layoutY="101.0" prefHeight="25.0" prefWidth="97.0" />
       <Label layoutX="14.0" layoutY="84.0" text="Select request" />
       <Button fx:id="openViewEditPersonFormBtn1" layoutX="268.0" layoutY="88.0" mnemonicParsing="false" onAction="#openViewEditPersonForm" prefHeight="25.0" prefWidth="126.0" text="View/Edit Person" />
-      <Button fx:id="openViewEditAreaFormBtn" layoutX="270.0" layoutY="156.0" mnemonicParsing="false" onAction="#openViewEditAreaForm" prefHeight="25.0" prefWidth="126.0" text="View/Edit Area" />
+      <Button fx:id="openViewEditDistrictFormBtn" layoutX="270.0" layoutY="156.0" mnemonicParsing="false" onAction="#openViewEditDistrictForm" prefHeight="25.0" prefWidth="126.0" text="View/Edit District" />
       <Button fx:id="openViewEditHouseFormBtn" layoutX="270.0" layoutY="194.0" mnemonicParsing="false" onAction="#openViewEditHouseForm" prefHeight="25.0" prefWidth="126.0" text="View/Edit House" />
       <Button fx:id="openViewEditRolesFormBtn" layoutX="435.0" layoutY="122.0" mnemonicParsing="false" onAction="#openViewEditRolesForm" prefHeight="25.0" prefWidth="102.0" text="View/Edit Roles" />
       <Button fx:id="openViewEditApartmentFormBtn" layoutX="269.0" layoutY="122.0" mnemonicParsing="false" onAction="#openViewEditApartmentForm" text="View/Edit Apartment" />
