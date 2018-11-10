@@ -24,6 +24,7 @@ public class Database {
 		} catch (SQLException e) {
 			System.err.println("An SQL exception occured when opening connection " + e);
 			}
+    	System.out.println("Connected!");
     }
     
     
