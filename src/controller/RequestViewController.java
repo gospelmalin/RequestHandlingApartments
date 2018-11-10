@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Request;
 import repository.RequestRepository;
+import java.sql.Date;
 
 public class RequestViewController {
 	
@@ -27,46 +28,46 @@ public class RequestViewController {
 	private TableView<Request> requestTable;
 	
 	 @FXML
-	 private ComboBox selectApartmentCombo;
+	 private ComboBox<String> selectApartmentCombo;
 	 
 	 @FXML
-	 private ComboBox selectStatusCombo;
+	 private ComboBox<String> selectStatusCombo;
 	
 	 @FXML
 	 private TextField numberOfResultsText;
 	 
 	 @FXML
-    private TableColumn<?, ?> requestIdColumn;
+    private TableColumn<Request, Integer> requestIdColumn;
 
     @FXML
-    private TableColumn<?, ?> reportedByColumn;
+    private TableColumn<Request, String> reportedByColumn;
 
     @FXML
-    private TableColumn<?, ?> requestDateColumn;
+    private TableColumn<Request, Date> requestDateColumn;
 
     @FXML
-    private TableColumn<?, ?> addressColumn;
+    private TableColumn<Request, String> addressColumn;
 
     @FXML
-    private TableColumn<?, ?> houseNoColumn;
+    private TableColumn<Request, String> houseNoColumn;
 
     @FXML
-    private TableColumn<?, ?> apartmentNoColumn;
+    private TableColumn<Request, Integer> apartmentNoColumn;
 
     @FXML
-    private TableColumn<?, ?> districtColumn;
+    private TableColumn<Request, String> districtColumn;
 
     @FXML
-    private TableColumn<?, ?> descriptionColumn;
+    private TableColumn<Request, String> descriptionColumn;
 
     @FXML
-    private TableColumn<?, ?> statusColumn;
+    private TableColumn<Request, String> statusColumn;
 
     @FXML
-    private TableColumn<?, ?> completionDateColumn;
+    private TableColumn<Request, Date> completionDateColumn;
 
     @FXML
-    private TableColumn<?, ?> resolvedByColumn;
+    private TableColumn<Request, Date> resolvedByColumn;
 
     @FXML
     private Button requestInformationSubmitButton;
@@ -85,6 +86,10 @@ public class RequestViewController {
 	
 	@FXML
 	private void initialize () {
+		
+		selectStatusCombo.getItems().addAll("Not started","In progress","Completed","Any");
+		selectStatusCombo.setValue("Any");
+		
 		//TODO
 		// mouseclick eventhandler
 	//	btnCreateDistrict.setOnMouseClicked(this::handleOnMouseClicked); //TODO
@@ -144,14 +149,16 @@ public class RequestViewController {
 		    @FXML
 		    void showRequestsForSelectedApartmentsAndStatusByLimit(ActionEvent event) {
 		    	String apartment = null; //TODO get text from selection of combobox selectApartmentCombo		  
-		    	String status = null; //TODO get text from selection of combobox selectStatusCombo
+		    	//String apartment = selectApartmentCombo.getValue();
+		    	
+		    	String status = selectStatusCombo.getValue(); //TODO get text from selection of combobox selectStatusCombo
 		    	
 			    	// Check that text field is not empty
 			    	if (!(numberOfResultsText.getText().length() > 0)){
 			    		return;
 			    	}
 		    	int limit = Integer.parseInt(numberOfResultsText.getText());
-		    	System.out.println(limit + " requests for apartment " + apartment + " with " + status + " should be shown in the table in RequestView");
+		    	System.out.println(limit + " requests for apartment " + apartment + " with " + status + " status should be shown in the table in RequestView");
 		    	
 		    	//TODO add code to show selected requests. Need sql like
 		    	// select and from as for get all, + WHERE a.apartment_no = apartment AND s.status_description= status

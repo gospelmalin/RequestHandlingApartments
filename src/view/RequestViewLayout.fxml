@@ -16,7 +16,7 @@
    <children>
       <Group layoutX="2.0" layoutY="164.0">
          <children>
-            <TableView layoutX="7.0" layoutY="21.0" prefHeight="223.0" prefWidth="1005.0">
+            <TableView fx:id="requestTable" layoutX="7.0" layoutY="21.0" prefHeight="223.0" prefWidth="1005.0">
               <columns>
                 <TableColumn fx:id="requestIdColumn" prefWidth="67.0" text="Request id" />
                 <TableColumn fx:id="reportedByColumn" prefWidth="142.0" text="Reported by" />
