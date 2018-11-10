@@ -28,6 +28,8 @@ public class AdminViewController {
 	 private ChoiceBox selectRequestIdChoice;
 	 @FXML
 	 private TextArea startMessageConsole;
+	 @FXML
+	 private Button goHome;
 	 
 	    
 	 //Initializing the controller class.
@@ -81,6 +83,13 @@ public class AdminViewController {
     private void openViewEditApartmentForm(ActionEvent event) {
 		//TODO
 		System.out.println("ViewEditApartment should open");
+	}
+
+	//Go back to home screen
+	@FXML
+	public void goHome(ActionEvent actionEvent) {
+
+		ViewController.activate("StartView");
 	}
     		
 }

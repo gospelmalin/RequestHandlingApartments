@@ -64,5 +64,6 @@
       <Label layoutX="247.0" layoutY="90.0" text="OR" />
       <Separator layoutX="502.0" layoutY="47.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="10.0" />
       <Label layoutX="522.0" layoutY="50.0" text="Resolvers only" />
+      <Button id="goHome" layoutX="22.0" layoutY="497.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
    </children>
 </AnchorPane>

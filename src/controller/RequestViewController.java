@@ -19,8 +19,10 @@ public class RequestViewController {
 	
 	RequestRepository rr = new RequestRepository();
 	
-	
-	@FXML
+	 @FXML
+    private Button goHome;
+
+		@FXML
 	private TableView<Request> requestTable;
 	
 	
@@ -48,6 +50,11 @@ public class RequestViewController {
 		updateTable();
 	}
 	//TODO
+	 @FXML
+    public void goHome(ActionEvent actionEvent) {
+
+        ViewController.activate("StartView");
+    }
 	
 		public void openAddNewRequest(ActionEvent actionEvent) {
 			//TODO
@@ -91,4 +98,7 @@ public class RequestViewController {
 		
 }
 
+
+   
+   
 

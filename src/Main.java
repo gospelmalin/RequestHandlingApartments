@@ -91,7 +91,8 @@ public class Main extends Application {
             viewcontroller.addScreen("AddRequest", FXMLLoader.load(getClass().getResource( "view/AddRequestLayout.fxml" )));
             viewcontroller.addScreen("AdminForm", FXMLLoader.load(getClass().getResource( "view/AdminFormView.fxml" )));
             viewcontroller.addScreen("EditRequest", FXMLLoader.load(getClass().getResource( "view/EditRequestLayout.fxml" )));
-           
+            viewcontroller.addScreen("StartView", FXMLLoader.load(getClass().getResource( "view/StartView.fxml" )));
+
 
             //ViewControllers(scene);
             // Set Start view into the center of root layout.
