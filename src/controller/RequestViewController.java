@@ -42,7 +42,7 @@ public class RequestViewController {
 		//TODO
 		// Match column with property
 		//idDistrict.setCellValueFactory(new PropertyValueFactory<District, String>("id"));
-	//	idName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		//idName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		
 		// Update table
 		updateTable();
@@ -84,10 +84,10 @@ public class RequestViewController {
 		}
 		
 		 private void updateTable() {
-		    	
-				ObservableList<Request> list = FXCollections.observableArrayList(rr.getAll());
-				requestTable.setItems((ObservableList<Request>) list);
-		    }
+		    
+			 ObservableList<Request> list = FXCollections.observableArrayList(rr.getAll());
+			//requestTable.setItems((ObservableList<Request>) list);	
+		}
 		
 }
 
