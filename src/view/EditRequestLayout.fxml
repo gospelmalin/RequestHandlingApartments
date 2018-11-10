@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RequestViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditRequestController">
    <children>
       <Label contentDisplay="CENTER" layoutX="24.0" layoutY="10.0" prefHeight="34.0" prefWidth="483.0" text="Edit request">
          <font>
@@ -17,36 +17,30 @@
          </font>
       </Label>
       <Label layoutX="24.0" layoutY="57.0" text="Selected request" />
-      <ComboBox layoutX="24.0" layoutY="74.0" prefWidth="150.0" />
-      <ComboBox layoutX="204.0" layoutY="74.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectRequestIdCombo" layoutX="24.0" layoutY="74.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectResolverNameCombo" layoutX="204.0" layoutY="74.0" prefWidth="150.0" />
       <Label layoutX="206.0" layoutY="57.0" text="Resolver name" />
-      <ComboBox layoutX="376.0" layoutY="75.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectStatusCombo" layoutX="376.0" layoutY="75.0" prefWidth="150.0" />
       <Label layoutX="378.0" layoutY="58.0" text="Status" />
-      <Button layoutX="497.0" layoutY="111.0" mnemonicParsing="false" text="Update request" />
-      <TextArea layoutX="16.0" layoutY="317.0" prefHeight="75.0" prefWidth="784.0" />
-      <Label layoutX="15.0" layoutY="300.0" text="Result console" />
-      <TableView layoutX="19.0" layoutY="155.0" prefHeight="134.0" prefWidth="784.0">
+      <Button fx:id="updateRequestBtn" layoutX="528.0" layoutY="104.0" mnemonicParsing="false" text="Update request" />
+      <TextArea layoutX="16.0" layoutY="367.0" prefHeight="37.0" prefWidth="1005.0" />
+      <Label layoutX="14.0" layoutY="350.0" text="Result console" />
+      <Button id="goHome" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
+      <TableView fx:id="requestTable" layoutX="14.0" layoutY="137.0" prefHeight="210.0" prefWidth="1005.0">
          <columns>
-            <TableColumn prefWidth="67.0" text="Request id" />
-            <TableColumn prefWidth="68.0" text="Apartment" />
-            <TableColumn prefWidth="95.0" text="Description" />
-            <TableColumn prefWidth="78.0" text="Request date" />
-            <TableColumn prefWidth="142.0" text="Requester">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="First name" />
-                  <TableColumn prefWidth="75.0" text="Last name" />
-               </columns>
-            </TableColumn>
-            <TableColumn prefWidth="67.0" text="Status" />
-            <TableColumn prefWidth="164.0" text="Allocated to">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="First name" />
-                  <TableColumn prefWidth="75.0" text="Last name" />
-               </columns>
-            </TableColumn>
+            <TableColumn fx:id="requestIdColumn" prefWidth="67.0" text="Request id" />
+            <TableColumn fx:id="reportedByColumn" prefWidth="142.0" text="Reported by" />
+            <TableColumn fx:id="requestDateColumn" prefWidth="78.0" text="Request date" />
+            <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
+            <TableColumn fx:id="houseNoColumn" prefWidth="75.0" text="House No" />
+            <TableColumn fx:id="apartmentNoColumn" prefWidth="68.0" text="Apartment" />
+            <TableColumn fx:id="districtColumn" prefWidth="75.0" text="District" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="95.0" text="Description" />
+            <TableColumn fx:id="statusColumn" prefWidth="67.0" text="Status" />
+            <TableColumn fx:id="completionDateColumn" prefWidth="107.0" text="Completion date" />
+            <TableColumn fx:id="resolvedByColumn" prefWidth="164.0" text="Allocated to" />
             <TableColumn prefWidth="107.0" text="Completion date" />
          </columns>
       </TableView>
-      <Button id="goHome" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
    </children>
 </AnchorPane>
