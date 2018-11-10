@@ -13,13 +13,13 @@
       <Button fx:id="submitAddRequestBtn" layoutX="504.0" layoutY="225.0" mnemonicParsing="false" text="Submit" />
       <TextArea layoutX="30.0" layoutY="295.0" prefHeight="91.0" prefWidth="543.0" />
       <Label layoutX="30.0" layoutY="278.0" text="Message console" />
-      <TextField layoutX="27.0" layoutY="85.0" promptText="Enter first name" />
-      <TextField layoutX="186.0" layoutY="85.0" promptText="Enter last name" />
-      <ChoiceBox layoutX="348.0" layoutY="85.0" prefWidth="150.0" />
+      <TextField fx:id="requesterFirstNameTextField" layoutX="27.0" layoutY="85.0" promptText="Enter first name" />
+      <TextField fx:id="requesterLastNameTextField" layoutX="186.0" layoutY="85.0" promptText="Enter last name" />
+      <ChoiceBox fx:id="addRequestApartmentChoiceBox" layoutX="348.0" layoutY="85.0" prefWidth="150.0" />
       <Label layoutX="348.0" layoutY="68.0" text="Apartment" />
       <Label layoutX="27.0" layoutY="68.0" text="First name" />
       <Label layoutX="186.0" layoutY="68.0" text="Last name" />
-      <TextArea layoutX="27.0" layoutY="144.0" prefHeight="113.0" prefWidth="471.0" promptText="Describe problem" />
+      <TextArea fx:id="requestDescriptionTextArea" layoutX="27.0" layoutY="144.0" prefHeight="113.0" prefWidth="471.0" promptText="Describe problem" />
       <Label layoutX="27.0" layoutY="127.0" text="Problem description" />
       <Label layoutX="27.0" layoutY="6.0" prefHeight="42.0" prefWidth="409.0" text="Request form">
          <font>

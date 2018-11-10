@@ -12,37 +12,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RequestViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RequestViewController">
    <children>
       <Group layoutX="2.0" layoutY="164.0">
          <children>
-            <TableView layoutX="7.0" layoutY="21.0" prefHeight="223.0" prefWidth="784.0">
+            <TableView layoutX="7.0" layoutY="21.0" prefHeight="223.0" prefWidth="1005.0">
               <columns>
                 <TableColumn prefWidth="67.0" text="Request id" />
-                  <TableColumn prefWidth="68.0" text="Apartment" />
-                  <TableColumn prefWidth="95.0" text="Description" />
+                <TableColumn prefWidth="142.0" text="Reported by" />
                   <TableColumn prefWidth="78.0" text="Request date" />
-                <TableColumn prefWidth="142.0" text="Requester">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="First name" />
-                        <TableColumn prefWidth="75.0" text="Last name" />
-                     </columns>
-                  </TableColumn>
+                  <TableColumn prefWidth="75.0" text="Address" />
+                  <TableColumn prefWidth="75.0" text="House No" />
+                  <TableColumn prefWidth="68.0" text="Apartment" />
+                  <TableColumn prefWidth="75.0" text="District" />
+                  <TableColumn prefWidth="95.0" text="Description" />
                   <TableColumn prefWidth="67.0" text="Status" />
-                  <TableColumn prefWidth="164.0" text="Allocated to">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="First name" />
-                        <TableColumn prefWidth="75.0" text="Last name" />
-                     </columns>
-                  </TableColumn>
                   <TableColumn prefWidth="107.0" text="Completion date" />
+                  <TableColumn prefWidth="164.0" text="Allocated to" />
               </columns>
             </TableView>
          </children>
       </Group>
       <Group layoutX="14.0" layoutY="408.0">
          <children>
-            <TextArea layoutY="18.0" prefHeight="62.0" prefWidth="774.0" />
+            <TextArea layoutY="18.0" prefHeight="62.0" prefWidth="997.0" />
             <Label layoutX="1.0" text="Result console" />
          </children>
       </Group>
