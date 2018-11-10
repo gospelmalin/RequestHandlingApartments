@@ -26,10 +26,10 @@ house_id int AUTO_INCREMENT PRIMARY KEY,
 house_no varchar(5) NOT NULL,
 district_id int NOT NULL,
 house_address varchar(100),
-CONSTRAINT fk_house_district
-		FOREIGN KEY(district_id) REFERENCES district(district_id)
-		ON DELETE CASCADE
-		ON UPDATE RESTRICT
+CONSTRAINT fk_district_house
+	FOREIGN KEY(district_id) REFERENCES district(district_id)
+	ON DELETE CASCADE
+	ON UPDATE RESTRICT
 );
 
 CREATE TABLE apartment(
