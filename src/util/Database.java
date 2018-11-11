@@ -2,6 +2,7 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,7 +10,7 @@ import java.sql.Statement;
 public class Database {
 	
 	private static final String DATABASE = "requesthandling";
-	private static final String CONN_STR = "jdbc:mariadb://192.168.1.83:3306/" + DATABASE;
+	private static final String CONN_STR = "jdbc:mariadb://192.168.8.103:3306/" + DATABASE;
 	private static final String USER = "yhAdmin";
 	private static final String PWD = "yhsipi17";
 	
@@ -37,9 +38,11 @@ public class Database {
         } catch (SQLException e){
         	System.err.println("An SQL exception occured when closing connection " + e);
         }
+        
+        System.out.println("Connection closed!");
     }
-    
-    //DB Execute Select Query Operation
+   
+	//DB Execute Select Query Operation
     public static ResultSet executeQuery(String query) {
     	
     	// connect to db
@@ -119,6 +122,10 @@ public class Database {
     public static Connection getConnection() {
     	dbConnect();
     	return conn;
+    }
+
+    public static void closeConnection() {
+    	dbClose();
     }
 
 }
