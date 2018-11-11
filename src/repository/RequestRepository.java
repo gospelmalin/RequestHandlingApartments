@@ -18,7 +18,7 @@ public class RequestRepository implements IRepository<Request> {
 	public Request get(int id) { //TODO check and test this 
 	// get by id 
 		String query = "SELECT r.request_id AS " + "'Request id', " + 
-				"CONCAT(t.first_name + ' ' + t.last_name)"+ " AS "+ "'Reported by',"
+				"CONCAT(t.first_name," + "' '," + "t.last_name)"+ " AS "+ "'Reported by',"
 				+ "r.request_date AS " + "'Date reported',"
 				+ "h.house_address AS " + "'Address',"
 				+ "h.house_no AS " + "'House number',"
@@ -27,7 +27,7 @@ public class RequestRepository implements IRepository<Request> {
 				+ "r.request_description AS " + "'Description',"
 				+ "s.status_description AS " + "'Status',"
 				+ "r.completion_date AS " + "'Date completed',"
-				+ "CONCAT(e.first_name +' ' + e.last_name) " + "'Completed by'"
+				+ "CONCAT(e.first_name," + "' '," + "e.last_name) " + "'Completed by'"
 		+ " FROM request r INNER JOIN person t"
 		+ " ON t.person_id = r.requester_id"
 		+ " INNER JOIN apartment a"
@@ -82,7 +82,7 @@ public class RequestRepository implements IRepository<Request> {
 	@Override
 	public ArrayList<Request> getAll() { //TODO test and check
 		String query = "SELECT r.request_id AS " + "'Request id', " + 
-				"CONCAT(t.first_name + ' ' + t.last_name)"+ " AS "+ "'Reported by',"
+				"CONCAT(t.first_name," + "' '," + "t.last_name)"+ " AS "+ "'Reported by',"
 				+ "r.request_date AS " + "'Date reported',"
 				+ "h.house_address AS " + "'Address',"
 				+ "h.house_no AS " + "'House number',"
@@ -91,7 +91,7 @@ public class RequestRepository implements IRepository<Request> {
 				+ "r.request_description AS " + "'Description',"
 				+ "s.status_description AS " + "'Status',"
 				+ "r.completion_date AS " + "'Date completed',"
-				+ "CONCAT(e.first_name +' ' + e.last_name) " + "'Completed by'"
+				+ "CONCAT(e.first_name," +"' '," + "e.last_name) " + "'Completed by'"
 		+ " FROM request r INNER JOIN person t"
 		+ " ON t.person_id = r.requester_id"
 		+ " INNER JOIN apartment a"
