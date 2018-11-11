@@ -40,6 +40,13 @@ public class Request {
 	}
 
 
+	public Request(String reportedBy, int apartmentNo, String description) {
+		this.reportedBy = reportedBy;
+		this.apartmentNo = apartmentNo;
+		this.description = description;
+	}
+
+
 	public Request(int requestId, int requesterId, String reportedBy, Date requestDate, int apartmentId, String address,
 			String houseNo, int apartmentNo, String district, String description, String status, int statusId,
 			Date completionDate, int solverId, String completedBy) {
@@ -69,7 +76,20 @@ public class Request {
 	}
 
 
+	public Request(String reportedBy, int apartmentNo, String description, Date requestDate) {
+		this.reportedBy = reportedBy;
+		this.apartmentNo = apartmentNo;
+		this.description = description;
+		this.requestDate = requestDate;
+	}
 	
+	public Request(String reportedBy, int apartmentNo, String houseNo, String description, Date requestDate) {
+		this.reportedBy = reportedBy;
+		this.apartmentNo = apartmentNo;
+		this.houseNo = houseNo;
+		this.description = description;
+		this.requestDate = requestDate;
+	}
 
 
 	/**

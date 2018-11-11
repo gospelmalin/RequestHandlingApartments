@@ -1,6 +1,8 @@
 package repository;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -131,16 +133,13 @@ public class RequestRepository implements IRepository<Request> {
 	
 		return requests;
 	}
-
 	
 	@Override
 	public void add(Request t) {
-		//
-		// connect to db
-		
-	//	Database.dbConnect(); //Database need to be public
-    	//
+		// Prepare connection
+		Connection conn = null;
 
+		// Prepare query
 		PersonRepository pr = new PersonRepository();
 		
 		String query ="INSERT INTO request(requester_id, apartment_id, "
@@ -149,7 +148,7 @@ public class RequestRepository implements IRepository<Request> {
 		String houseNo = t.getHouseNo();
 		int apartmentNo = t.getApartmentNo();
 		Person person = new Person();
-		//System.out.println("Fullname: "+ fullname + " HouseNo: " + houseNo + " ApartmentNo: " + apartmentNo); //TODO temp
+		System.out.println("Fullname: "+ fullname + " HouseNo: " + houseNo + " ApartmentNo: " + apartmentNo); //TODO temp
 		person=	pr.getPersonByFullName(fullname, houseNo, apartmentNo);
 		
 		Apartment ap = person.getCurrentApartment();
@@ -157,68 +156,40 @@ public class RequestRepository implements IRepository<Request> {
 		int apartmentIdFromPerson = ap.getApartmentId();
 		String descriptionFromPerson = t.getDescription();
 		Date requestDateFromPerson = t.getRequestDate();
-	/*	System.out.println("personIdFromPerson: " + personIdFromPerson + 
+		System.out.println("personIdFromPerson: " + personIdFromPerson + 
 				" apartmentIdFromPerson: " + apartmentIdFromPerson + 
-				" descriptionFromPerson: "+ descriptionFromPerson);*/
+				" descriptionFromPerson: "+ descriptionFromPerson); //TODO temp
 		
-		//TODO way forward? This works if database is public
-		
-		/*
-		ArrayList<Object> values = new ArrayList<>();
-		Object obj1 =((Object) person.getPersonId()); // requester_id
-		Object obj2 =((Object) ap.getApartmentId()); // apartment_id
-		Object obj3 =((Object) t.getDescription());
-		Object obj4 =((Object) t.getRequestDate());
-		
-		
-		values.add(1, obj1);
-		values.add(2, obj2);
-		values.add(3, obj3);
-		values.add(4, obj4);
-		*/
-		// do querying
-		//System.out.println("First one: " + "INSERT INTO request(requester_id, apartment_id, "
-		//		+ "request_description, request_date) VALUES(" + personIdFromPerson +","+ apartmentIdFromPerson+", '"+ descriptionFromPerson+"',"+ requestDateFromPerson+");");//TODO temp
-		
-		
-		
-		/*
 		try {
-			
+			// get connection
+			conn = Database.getConnection();
+			// query database
 			PreparedStatement prepStatement = conn.prepareStatement(query);
 			//TODO read arraylist
 			prepStatement.setInt(1, personIdFromPerson);
 			prepStatement.setInt(2, apartmentIdFromPerson);
 			prepStatement.setString(3, descriptionFromPerson);
-			//prepStatement.setDate(4, requestDateFromPerson) ;
-			prepStatement.setDate(4, getCurrentDate());
-			//int rows = prepStatement.executeUpdate();
-			prepStatement.executeUpdate();
-			//System.out.println(prepStatement); 
-			//System.out.println("INSERT INTO request(requester_id, apartment_id, "
-			//		+ "request_description, request_date) VALUES(" + person.getPersonId() +","+ ap.getApartmentId()+","+ t.getDescription()+","+ "2018-11-09"+");");//TODO temp
-			prepStatement.executeQuery();
+			//prepStatement.setDate(4, requestDateFromPerson) ; //TODO use this
+			prepStatement.setDate(4, getCurrentDate()); //TODO TEMP for testing
+			int rows = prepStatement.executeUpdate();
+			System.out.println("INSERT INTO request(requester_id, apartment_id, "
+					+ "request_description, request_date) VALUES(" + person.getPersonId() +","+ ap.getApartmentId()+","+ t.getDescription()+","+ "2018-11-09"+");");//TODO temp
 			prepStatement.close();
-			
+			//System.out.println("Your request is submitted and will be handled.");
+			System.out.println("Inserted " + rows + " row(s)");
 		} catch (SQLException e1) {
-			System.err.println("An SQL exception occured when while executing query " + e1.getMessage());
+			System.err.println("An SQL exception occured when while executing query: " + e1.getMessage());
 		} catch (NullPointerException e) {
 			System.err.println("A null pointer exception occured " + e.getMessage());
 		}
-		*/
-		// close db
-	//	Database.dbClose(); //Database need to be public
-		
+		// close connection
+		//TODO - how??
 	}
 
-	@Override
-	public void update(Request t) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
-	public void remove(Request t) { //TODO test method
+	public void remove(Request t) { //TODO test this method
 		String query = "DELETE FROM request WHERE id=" + t.getRequestId();
 		Database.executeUpdate(query);
 		
@@ -229,6 +200,13 @@ public class RequestRepository implements IRepository<Request> {
 		private static java.sql.Date getCurrentDate() {
 		    java.util.Date today = new java.util.Date();
 		    return new java.sql.Date(today.getTime());
+		}
+
+
+		@Override
+		public void update(Request t) {
+			// TODO Auto-generated method stub
+			
 		}
 
 	

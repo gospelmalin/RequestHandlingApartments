@@ -12,7 +12,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Apartment;
+import model.Request;
 import repository.ApartmentRepository;
+import repository.HouseRepository;
+import repository.RequestRepository;
+import util.Util;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -26,6 +30,9 @@ public class AddRequestController {
  
 	@FXML
 	private ChoiceBox<String> addRequestApartmentChoiceBox;
+	
+	@FXML
+	private ChoiceBox<String> addRequestHouseChoiceBox;
 	
 	//Select the apartment from a list
 	@FXML
@@ -53,6 +60,8 @@ public class AddRequestController {
 
 		updateListOfApartments();
 		
+		updateListOfHouses();
+		
 		/*
 		//Moved this to separate method updateListOfApartments()
 		//Create a arraylist
@@ -68,8 +77,14 @@ public class AddRequestController {
 
 	@FXML
 	public void ChoiceBoxApartment(ActionEvent actionEvent) {
-
-		String selectedItem = selectApartment.getSelectionModel().getSelectedItem().toString();
+		String selectedItem = addRequestApartmentChoiceBox.getSelectionModel().getSelectedItem().toString();
+		//String selectedItem = selectApartment.getSelectionModel().getSelectedItem().toString();
+		System.out.println("You selected the item: " + selectedItem);
+	}
+	
+	@FXML
+	public void ChoiceBoxHouse(ActionEvent actionEvent) {
+		String selectedItem = addRequestHouseChoiceBox.getSelectionModel().getSelectedItem().toString();
 		System.out.println("You selected the item: " + selectedItem);
 	}
 
@@ -109,12 +124,27 @@ public class AddRequestController {
 		 ObservableList<String> availableChoices = addRequestApartmentChoiceBox.getItems();
 		 
 		// To set the items in the choice box: 
-		 availableChoices = FXCollections.observableArrayList("1","2","3"); //TODO working example
+		 availableChoices = FXCollections.observableArrayList("1","2","3","4","5", "25"); //TODO working example
 		 addRequestApartmentChoiceBox.setItems(availableChoices);
 
 		 
 	    }
 	 
+	 
+	 private void updateListOfHouses() {
+		//get repository
+		 HouseRepository hr = new HouseRepository();
+		 
+		 //TODO
+		 
+		 //To get the items in the choice box: 
+		 ObservableList<String> availableChoices1 = addRequestHouseChoiceBox.getItems();
+		 
+		// To set the items in the choice box: 
+		 availableChoices1 = FXCollections.observableArrayList("10A","3510","2045"); //TODO working example
+		 addRequestHouseChoiceBox.setItems(availableChoices1);
+
+	 }
 	 
 	 @FXML
 		public void submitAddRequest(ActionEvent actionEvent) {
@@ -134,12 +164,25 @@ public class AddRequestController {
 			}
 	 	String description = requestDescriptionTextArea.getText();
 	 	
-	 	String apartment = addRequestApartmentChoiceBox.getValue().toString(); 
-	 	
-	 	System.out.println("Requester name: " + firstName +" " + lastName + ", apartment number " + apartment + "\nRequest description: " + description);
+	 	String apartmentString = addRequestApartmentChoiceBox.getValue().toString(); 
+	 	int apartment = Integer.parseInt(apartmentString);
+	 	String house = addRequestHouseChoiceBox.getValue().toString();
 		 
+	 	String fullName = firstName + ' ' + lastName;
+	 	
+	 	Util util = new Util();
+	 	java.sql.Date requestDate = util.getCurrentDate();
+	 	
+	 	System.out.println("Requester name: " + firstName +" " + lastName 
+	 			+ ", apartment number " + apartment + ", house number " + house 
+	 			+ "\nRequest description: " + description +"\nRequest date: " + requestDate);
 	 	//TODO submit addRequest
-	 
+	 	//Request request = new Request(fullName, apartment, description);
+	 	Request request = new Request(fullName, apartment, house, description, requestDate);
+	 	RequestRepository rr = new RequestRepository();
+	 	rr.add(request);
+	 	System.out.println("Your request is submitted and will be handled.");
+	 	 
 	 }
 
 	//Go back to home screen
