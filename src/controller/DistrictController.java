@@ -25,14 +25,13 @@ public class DistrictController{
 	private Button btnUpdateDistrict;
 	@FXML
 	private Button btnDeleteDistrict;
- 
+	@FXML
+	private Button btnHome;
+	
 	@FXML
 	private TextField districtName;
 	@FXML
 	private TextField tfActiveDistrict;
-	
-	@FXML
-	private Label lblId;
 	
 	@FXML
 	private TableView<District> districtTable;
@@ -48,9 +47,13 @@ public class DistrictController{
 	@FXML
 	private void initialize () {
 		
-		// mouseclick eventhandler
+		// mouseclick eventhandlers
 		btnCreateDistrict.setOnMouseClicked(this::handleOnMouseClicked);
+		btnUpdateDistrict.setOnMouseClicked(this::handleUpdateOnMouseClicked);
+		btnDeleteDistrict.setOnMouseClicked(this::handleDeleteOnMouseClicked);
+		btnHome.setOnMouseClicked(this::goHome);
 		districtTable.setOnMouseClicked(this::handleTableOnMouseClicked);
+		
 
 		// Match column with property
 		idDistrict.setCellValueFactory(new PropertyValueFactory<District, String>("id"));
@@ -60,12 +63,46 @@ public class DistrictController{
 		updateTable();
 		
 	}
-    @FXML
+ 
+   @FXML
+    private void handleUpdateOnMouseClicked(MouseEvent event)
+    {
+	   // Check for empty str
+	   if(tfActiveDistrict.getText() == "") {
+		   return;
+	   }
+	   
+	   // Get text
+	   district.setName(tfActiveDistrict.getText());
+	   
+	   // Update
+	   dr.update(district);
+	   
+	   // Update table
+	   updateTable();
+    }
+
+   @FXML
+   private void handleDeleteOnMouseClicked(MouseEvent event)
+   {
+	   // Check for empty str
+	   if(district == null) {
+		   return;
+	   }
+	   
+	   // Delete
+	   dr.remove(district);
+	   
+	   // Update table
+	   updateTable();
+   }
+
+	@FXML
     private void handleTableOnMouseClicked(MouseEvent event)
     {
     	district = districtTable.getSelectionModel().getSelectedItem();
     	tfActiveDistrict.setText(district.getName());
-    	System.out.println(district);
+    	
     }
    
     // Check that text field is not empty
@@ -97,7 +134,7 @@ public class DistrictController{
 
 	//Go back to home screen
 	@FXML
-	public void goHome(ActionEvent actionEvent) {
+	public void goHome(MouseEvent event) {
 
 		ViewController.activate("StartView");
 	}
