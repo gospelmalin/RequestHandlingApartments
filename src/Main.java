@@ -6,6 +6,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.Request;
+import repository.DistrictRepository;
 import repository.RequestRepository;
 
 import java.io.IOException;
@@ -125,9 +126,9 @@ public class Main extends Application {
 		
 		
 		// TEST
-		//StatusRepository sr = new StatusRepository();
-		//DistrictRepository dr = new DistrictRepository();
-		//PersonRepository pr = new PersonRepository();
+		// StatusRepository sr = new StatusRepository();
+		// DistrictRepository dr = new DistrictRepository();
+		// PersonRepository pr = new PersonRepository();
 		
 		
 		// TEST ADD person
@@ -195,6 +196,7 @@ public class Main extends Application {
 		// TEST GET ALL Districts and printout
 		// ArrayList<District> districts = dr.getAll();
 		// districts.forEach(d -> System.out.println(d.toString()));
+		// System.out.println(dr.get(2));
 		
 	//	RequestRepository rr = new RequestRepository();
 		//Calendar currenttime = Calendar.getInstance();
