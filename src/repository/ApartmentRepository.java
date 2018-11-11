@@ -54,7 +54,7 @@ public class ApartmentRepository implements IRepository<Apartment> {
         try {
             while(rs.next()) {
                 // add Apartment to list
-                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no")));
+                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no"), rs.getInt("house_id")));
             }
             rs.close();
 

@@ -93,7 +93,7 @@ public class AddRequestController {
 
 		 //We loop through every apartment in the Apartment array.
 		 for(Apartment no : ApartmentArray) {
-		 	int grabID = no.getApartmentId();//And for every apartment in the array we get the id
+		 	int grabID = no.getApartmentNo();//And for every apartment in the array we get the id
 		 	getList.add(grabID); //Add the ID to the new Integer arraylist
 		 }
 		//String buildFinalString = getList.toString(); //choicebox tar bara en lista med strings on inte Integers

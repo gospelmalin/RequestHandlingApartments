@@ -18,17 +18,17 @@
         </Label>
         <TableView fx:id="districtTable" layoutY="174.0" prefHeight="228.0" prefWidth="600.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="174.0">
             <columns>
-                <TableColumn fx:id="idDistrict" prefWidth="75.0" text="id" />
-            <TableColumn fx:id="idName1" prefWidth="255.0" text="Apartment number" />
-            <TableColumn fx:id="idDistrict1" prefWidth="236.0" text="House number" />
+                <TableColumn fx:id="id" prefWidth="75.0" text="id" />
+            <TableColumn fx:id="idApartment" prefWidth="255.0" text="Apartment number" />
+            <TableColumn fx:id="idHouseNumber" prefWidth="236.0" text="House number" />
             </columns>
         </TableView>
-        <TextField fx:id="districtName" layoutX="203.0" layoutY="43.0" prefHeight="27.0" prefWidth="150.0" />
+        <TextField fx:id="fieldApartments" layoutX="203.0" layoutY="43.0" prefHeight="27.0" prefWidth="150.0" />
         <Label layoutX="45.0" layoutY="48.0" text="Apartment number" />
-        <Button fx:id="btnCreateDistrict" layoutX="169.0" layoutY="138.0" mnemonicParsing="false" text="Add apartment" />
+        <Button fx:id="btnCreateApartment" layoutX="169.0" layoutY="138.0" mnemonicParsing="false" text="Add apartment" />
       <Label layoutX="45.0" layoutY="90.0" text="House " />
-      <ChoiceBox layoutX="204.0" layoutY="85.0" prefWidth="150.0" />
-      <Button fx:id="btnCreateDistrict1" layoutX="298.0" layoutY="138.0" mnemonicParsing="false" text="Delete apartment" />
-      <Button id="goHome" fx:id="btnCreateDistrict11" layoutX="16.0" layoutY="138.0" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="59.0" text="Home" />
+      <ChoiceBox fx:id="HouseChoiceBox" layoutX="204.0" layoutY="85.0" prefWidth="150.0" />
+      <Button fx:id="btnDeleteApartment" layoutX="298.0" layoutY="138.0" mnemonicParsing="false" text="Delete apartment" />
+      <Button fx:id="goHome" layoutX="16.0" layoutY="138.0" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="59.0" text="Home" />
     </children>
 </AnchorPane>
