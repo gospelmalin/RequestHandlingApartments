@@ -116,7 +116,7 @@ public class PersonRepository implements IRepository<Person>{
 				+ "	ON a.apartment_id = pa.apartment_id"
 				+ "	INNER JOIN house h"
 				+ "	ON h.house_id = a.house_id" 
-				+ "	WHERE CONCAT(p.first_name," +  "' '" + ", p.last_name)= " + fullname
+				+ "	WHERE CONCAT(p.first_name," +  "' '" + ", p.last_name)= " + "'"+ fullname+ "'"
 				+ "	AND h.house_no = " + "'"+ houseNo + "'"
 				+ " AND a.apartment_no= " + apartmentNo
 				+ "	; ";
