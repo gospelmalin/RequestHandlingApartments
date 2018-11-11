@@ -30,7 +30,7 @@
       <Button fx:id="btnCreateDistrict" layoutX="387.0" layoutY="69.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="151.0" text="Create new district" />
       <TextField fx:id="tfActiveDistrict" layoutX="74.0" layoutY="119.0" prefHeight="25.0" prefWidth="302.0" />
       <Button fx:id="btnUpdateDistrict" layoutX="388.0" layoutY="118.0" mnemonicParsing="false" text="Update" />
-      <Button fx:id="btnDeletDistrict" layoutX="473.0" layoutY="118.0" mnemonicParsing="false" text="Delete" />
-      <Label fx:id="lblId" alignment="CENTER_RIGHT" layoutX="34.0" layoutY="125.0" prefHeight="21.0" prefWidth="37.0" text="ID" textAlignment="RIGHT" />
+      <Button fx:id="btnDeleteDistrict" layoutX="473.0" layoutY="118.0" mnemonicParsing="false" onMouseClicked="#handleDeleteOnMouseClicked" text="Delete" />
+      <Button fx:id="btnHome" layoutX="388.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#goHome" text="Home" />
    </children>
 </AnchorPane>

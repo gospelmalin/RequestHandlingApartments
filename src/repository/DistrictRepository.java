@@ -144,7 +144,7 @@ public class DistrictRepository implements IRepository<District> {
 	@Override
 	public void remove(District t) {
 		
-		String query = "DELETE FROM district WHERE id=" + t.getId();
+		String query = "DELETE FROM district WHERE district_id=" + t.getId();
 		Database.executeUpdate(query);
 		
 	}
