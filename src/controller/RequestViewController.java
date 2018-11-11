@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Request;
 import repository.RequestRepository;
@@ -20,6 +21,7 @@ import java.sql.Date;
 public class RequestViewController {
 	
 	RequestRepository rr = new RequestRepository();
+	Request request = new Request();
 	
 	 @FXML
     private Button goHome;
@@ -67,7 +69,7 @@ public class RequestViewController {
     private TableColumn<Request, Date> completionDateColumn;
 
     @FXML
-    private TableColumn<Request, Date> resolvedByColumn;
+    private TableColumn<Request, String> resolvedByColumn;
 
     @FXML
     private Button requestInformationSubmitButton;
@@ -91,18 +93,39 @@ public class RequestViewController {
 		selectStatusCombo.setValue("Any");
 		
 		//TODO
-		// mouseclick eventhandler
+		//mouseclick eventhandler
 	//	btnCreateDistrict.setOnMouseClicked(this::handleOnMouseClicked); //TODO
+		requestTable.setOnMouseClicked(this::handleTableOnMouseClicked);
 
 		//TODO
 		// Match column with property
-		//idDistrict.setCellValueFactory(new PropertyValueFactory<District, String>("id"));
-	//	idName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		requestIdColumn.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
+		reportedByColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("reportedBy"));
+		requestDateColumn.setCellValueFactory(new PropertyValueFactory<Request, Date>("requestDate"));
+		addressColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("address"));
+		houseNoColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("houseNo"));
+		apartmentNoColumn.setCellValueFactory(new PropertyValueFactory<Request, Integer>("apartmentNo"));
+		districtColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("district"));
+		descriptionColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("description"));
+		statusColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("status"));
+		completionDateColumn.setCellValueFactory(new PropertyValueFactory<Request, Date>("completionDate"));
+		resolvedByColumn.setCellValueFactory(new PropertyValueFactory<Request, String>("completedBy"));
+		
 		
 		// Update table
-	//	updateTable();
+		updateTable();
 	}
-	//TODO
+	
+	
+	@FXML
+    private void handleTableOnMouseClicked(MouseEvent event)
+    {
+    	request = requestTable.getSelectionModel().getSelectedItem();
+    //	tfActiveRequest.setText(request.getName());
+    	
+    }
+	
+	
 	 @FXML
     public void goHome(ActionEvent actionEvent) {
         ViewController.activate("StartView");
@@ -138,13 +161,13 @@ public class RequestViewController {
 	    	System.out.println("openViewRequestsForm? should show selected request and allow editing");
 		}
 		
-		/*
+		
 		 private void updateTable() {
 		    	
 				ObservableList<Request> list = FXCollections.observableArrayList(rr.getAll());
 				requestTable.setItems((ObservableList<Request>) list);
 		    }
-		*/
+		
 
 		    @FXML
 		    void showRequestsForSelectedApartmentsAndStatusByLimit(ActionEvent event) {
