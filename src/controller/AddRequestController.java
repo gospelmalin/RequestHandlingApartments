@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Apartment;
+import model.House;
 import model.Request;
 import repository.ApartmentRepository;
 import repository.HouseRepository;
@@ -20,6 +21,7 @@ import util.Util;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 
 public class AddRequestController {
@@ -29,7 +31,7 @@ public class AddRequestController {
     private TextArea messageConsoleTextArea;
  
 	@FXML
-	private ChoiceBox<String> addRequestApartmentChoiceBox;
+	private ChoiceBox<Integer> addRequestApartmentChoiceBox;
 	
 	@FXML
 	private ChoiceBox<String> addRequestHouseChoiceBox;
@@ -62,17 +64,9 @@ public class AddRequestController {
 		
 		updateListOfHouses();
 		
-		/*
-		//Moved this to separate method updateListOfApartments()
-		//Create a arraylist
-		ArrayList<String> getList = new ArrayList<String>();
-		//Grab the repository
-		ApartmentRepository apartments = new ApartmentRepository();
-		getList.add(apartments.getAll().toString());
-		ObservableList<String> apartmentlist = FXCollections.observableArrayList(getList);
-		selectApartment.setItems(apartmentlist);
-		System.out.println("List: " + apartmentlist);
-*/
+
+
+
 	}
 
 	@FXML
@@ -89,60 +83,50 @@ public class AddRequestController {
 	}
 
 	 private void updateListOfApartments() {
-	    /*	
-		//Create a arraylist
-			ArrayList<String> getList = new ArrayList<String>();
-			//Grab the repository
-			ApartmentRepository apartments = new ApartmentRepository();
-			getList.add(apartments.getAll().toString());
-			ObservableList<String> apartmentlist = FXCollections.observableArrayList(getList);
-			selectApartment.setItems(apartmentlist);
-			System.out.println("List: " + apartmentlist);
-	*/
-		 //ApartmentRepository ar = new ApartmentRepository();
-		 //ObservableList<String> list = FXCollections.observableArrayList(ar.getAll().toString());
-		// addRequestApartmentChoiceBox.setItems((ObservableList<String>) list);
-		 
-		 //get repository
+
+		 //get repository Apartment
 		 ApartmentRepository ar = new ApartmentRepository();
-		 
-		 //test from here
-		 /*
-		 //get Apartment
-		 Apartment apartment = new Apartment();
-		 
-		 ArrayList<Apartment> apartments = ar.getAll();
-		 apartment.apartmentId = apartments.get(1);
-		 
-		 
-			int personIdFromPerson = person.getPersonId();
-			int apartmentIdFromPerson = ap.getApartmentId();
-			String descriptionFromPerson = t.getDescription();
-			Date requestDateFromPerson = t.getRequestDate();
-		*/ //until here
-		 //To get the items in the choice box: 
-		 ObservableList<String> availableChoices = addRequestApartmentChoiceBox.getItems();
-		 
-		// To set the items in the choice box: 
-		 availableChoices = FXCollections.observableArrayList("15","25","35","45","4","5","6","7","31", "32","33", "34"); //TODO working example
+		 //Create a Arraylist with type Apartment and store all apartment object
+		 ArrayList<Apartment> ApartmentArray = ar.getAll();
+		 //Create a Integer arraylist to store the apartment numbers
+		 ArrayList<Integer> getList = new ArrayList<Integer>();
+
+		 //We loop through every apartment in the Apartment array.
+		 for(Apartment no : ApartmentArray) {
+		 	int grabID = no.getApartmentId();//And for every apartment in the array we get the id
+		 	getList.add(grabID); //Add the ID to the new Integer arraylist
+		 }
+		//String buildFinalString = getList.toString(); //choicebox tar bara en lista med strings on inte Integers
+		 // To set the items in the choice box:ï¿½
+		 ObservableList<Integer>  availableChoices = FXCollections.observableArrayList(getList);
 		 addRequestApartmentChoiceBox.setItems(availableChoices);
 
-		 
+
+
 	    }
 	 
 	 
 	 private void updateListOfHouses() {
 		//get repository
 		 HouseRepository hr = new HouseRepository();
+
+		 ArrayList<House> HouseArray = hr.getAll();
+
+		 //Create a String arraylist to store the house numbers
+		 ArrayList<String> getHouseNoList = new ArrayList<String>();
+
+		 //We loop through every houseno in the House array.
+		 for(House house : HouseArray) {
+			 String grabHouse = house.getHouseNo();//For every object get the house no
+			 getHouseNoList.add(grabHouse); //Add the ID to the new Integer arraylist
+		 }
 		 
-		 //TODO
+		 //To get the items in the choice box:ï¿½
+		 //ObservableList<String> availableChoices1 = addRequestHouseChoiceBox.getItems();
 		 
-		 //To get the items in the choice box: 
-		 ObservableList<String> availableChoices1 = addRequestHouseChoiceBox.getItems();
-		 
-		// To set the items in the choice box: 
-		 availableChoices1 = FXCollections.observableArrayList("10A","3510","2045"); //TODO working example
-		 addRequestHouseChoiceBox.setItems(availableChoices1);
+		// To set the items in the choice box:ï¿½
+		 ObservableList<String> availableHouseChoices = FXCollections.observableArrayList(getHouseNoList);
+		 addRequestHouseChoiceBox.setItems(availableHouseChoices);
 
 	 }
 	 
@@ -164,21 +148,21 @@ public class AddRequestController {
 			}
 	 	String description = requestDescriptionTextArea.getText();
 	 	
-	 	String apartmentString = addRequestApartmentChoiceBox.getValue().toString(); 
-	 	int apartment = Integer.parseInt(apartmentString);
+	 	int apartmentString = addRequestApartmentChoiceBox.getValue();
+	 	//int apartment = Integer.parseInt(apartmentString);
 	 	String house = addRequestHouseChoiceBox.getValue().toString();
 		 
 	 	String fullName = firstName + ' ' + lastName;
-	 	
+
 	 	Util util = new Util();
 	 	java.sql.Date requestDate = util.getCurrentDate();
 	 	
 	 	System.out.println("Requester name: " + firstName +" " + lastName 
-	 			+ ", apartment number " + apartment + ", house number " + house 
+	 			+ ", apartment number " + apartmentString + ", house number " + house
 	 			+ "\nRequest description: " + description +"\nRequest date: " + requestDate);
 	 	//TODO submit addRequest
 	 	//Request request = new Request(fullName, apartment, description);
-	 	Request request = new Request(fullName, apartment, house, description, requestDate);
+	 	Request request = new Request(fullName, apartmentString, house, description, requestDate);
 	 	RequestRepository rr = new RequestRepository();
 	 	rr.add(request);
 	 	System.out.println("Your request is submitted and will be handled.");
