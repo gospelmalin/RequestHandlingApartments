@@ -34,7 +34,7 @@ public class EditApartmentController {
     private void initialize () {
         id.setCellValueFactory(new PropertyValueFactory<Apartment, Integer>("apartmentId"));
         idApartment.setCellValueFactory(new PropertyValueFactory<Apartment, Integer>("apartmentNo"));
-        idHouseNumber.setCellValueFactory(new PropertyValueFactory<Apartment, String>("houseNo"));
+        idHouseNumber.setCellValueFactory(new PropertyValueFactory<Apartment, String>("houseId"));
         updateListOfHouses();
         updateListOfApartmentsField();
     }
