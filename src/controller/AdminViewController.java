@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 
+import javax.swing.*;
+
 public class AdminViewController {
 
 	 @FXML
@@ -81,9 +83,10 @@ public class AdminViewController {
 	}
 	@FXML
     private void openViewEditApartmentForm(ActionEvent event) {
-		//TODO
+		ViewController.activate("EditApartment");
 		System.out.println("ViewEditApartment should open");
 	}
+
 
 	//Go back to home screen
 	@FXML

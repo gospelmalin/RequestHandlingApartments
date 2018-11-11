@@ -92,6 +92,7 @@ public class Main extends Application {
             viewcontroller.addScreen("AdminForm", FXMLLoader.load(getClass().getResource( "view/AdminFormView.fxml" )));
             viewcontroller.addScreen("EditRequest", FXMLLoader.load(getClass().getResource( "view/EditRequestLayout.fxml" )));
             viewcontroller.addScreen("StartView", FXMLLoader.load(getClass().getResource( "view/StartView.fxml" )));
+            viewcontroller.addScreen("EditApartment", FXMLLoader.load(getClass().getResource("view/EditApartmentLayout.fxml")));
 
 
             //ViewControllers(scene);
