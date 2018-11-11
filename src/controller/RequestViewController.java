@@ -175,6 +175,7 @@ public class RequestViewController {
 		    	//String apartment = selectApartmentCombo.getValue();
 		    	
 		    	String status = selectStatusCombo.getValue(); //TODO get text from selection of combobox selectStatusCombo
+		    	System.out.println(status);
 		    	
 			    	// Check that text field is not empty
 			    	if (!(numberOfResultsText.getText().length() > 0)){

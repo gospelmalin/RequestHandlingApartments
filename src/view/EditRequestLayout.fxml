@@ -22,7 +22,7 @@
       <Label layoutX="206.0" layoutY="57.0" text="Resolver name" />
       <ComboBox fx:id="selectStatusCombo" layoutX="376.0" layoutY="75.0" prefWidth="150.0" />
       <Label layoutX="378.0" layoutY="58.0" text="Status" />
-      <Button fx:id="updateRequestBtn" layoutX="528.0" layoutY="104.0" mnemonicParsing="false" text="Update request" />
+      <Button fx:id="updateRequestBtn" layoutX="528.0" layoutY="104.0" mnemonicParsing="false" onAction="#updateButtonStatus" text="Update request" />
       <TextArea layoutX="16.0" layoutY="367.0" prefHeight="37.0" prefWidth="1005.0" />
       <Label layoutX="14.0" layoutY="350.0" text="Result console" />
       <Button id="goHome" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
