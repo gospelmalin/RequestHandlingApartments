@@ -196,15 +196,17 @@ public class Main extends Application {
 		// ArrayList<District> districts = dr.getAll();
 		// districts.forEach(d -> System.out.println(d.toString()));
 		
-		//RequestRepository rr = new RequestRepository();
+	//	RequestRepository rr = new RequestRepository();
 		//Calendar currenttime = Calendar.getInstance();
 	   // Date sqldate = new Date((currenttime.getTime()).getTime());
 		//Date sqldate = new java.sql.Date(currenttime.getTime());
 		//System.out.println(sqldate);
 	    
-		//Request req = new Request(1, 2,"'Rico Medina'", sqldate, 1,"Duck Creek Road", "10A", 25, "Duck Creek", "Something wrong in this world", "Completed", 3, sqldate, 9,"Cameron Delae");
+		//Request req = new Request(1, 2,"'Rico Medina'", sqldate, 1,"Duck Creek Road", "10A", 25, "Duck Creek", "This is too bad", "Completed", 3, sqldate, 9,"Cameron Delae");
+	//	Request req = new Request(13, 2,"'Miriam Shell'", sqldate, 1,"Greater Forest Road", "3510", 5, "The Forest", "Freezer empty", "Completed", 3, sqldate, 9,"Cameron Delae");
 		
-		//rr.add(req);
+		
+	//	rr.add(req);
 
 		launch(args);
 

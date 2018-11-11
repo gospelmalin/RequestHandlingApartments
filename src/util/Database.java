@@ -45,7 +45,7 @@ public class Database {
     	// connect to db
     	dbConnect();
 
-    	// statment for query
+    	// statement for query
     	Statement stmt;
     	
     	// resultset for the result
@@ -115,4 +115,10 @@ public class Database {
 		
     }
     */
+
+    public static Connection getConnection() {
+    	dbConnect();
+    	return conn;
+    }
+
 }
