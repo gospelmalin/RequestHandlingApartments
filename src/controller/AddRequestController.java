@@ -124,7 +124,7 @@ public class AddRequestController {
 		 ObservableList<String> availableChoices = addRequestApartmentChoiceBox.getItems();
 		 
 		// To set the items in the choice box: 
-		 availableChoices = FXCollections.observableArrayList("1","2","3","4","5", "25"); //TODO working example
+		 availableChoices = FXCollections.observableArrayList("15","25","35","45","4","5","6","7","31", "32","33", "34"); //TODO working example
 		 addRequestApartmentChoiceBox.setItems(availableChoices);
 
 		 
