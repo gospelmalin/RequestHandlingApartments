@@ -15,10 +15,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Request;
 import repository.RequestRepository;
+import util.Util;
 
 public class EditRequestController {
 	RequestRepository rr1 = new RequestRepository();
 	Request request1 = new Request();
+	Util util = new Util();
 /*
 	  @FXML
 	    private ComboBox<?> selectRequestIdCombo1;
@@ -30,7 +32,7 @@ public class EditRequestController {
 	    private ComboBox<?> selectStatusCombo1;
 */
 	    @FXML
-	    private Button updateRequestBtn1;
+	    private Button updateRequestBtn;
 
 	    @FXML
 	    private TableView<Request> requestTable1;
@@ -42,7 +44,7 @@ public class EditRequestController {
 	    private TableColumn<Request, String> reportedByColumn1;
 
 	    @FXML
-	    private TableColumn<Request, Date> requestDateColumn1;
+	    private TableColumn<Request, java.util.Date> requestDateColumn1;
 
 	    @FXML
 	    private TableColumn<Request, String> addressColumn1;
@@ -63,39 +65,43 @@ public class EditRequestController {
 	    private TableColumn<Request, String> statusColumn1;
 
 	    @FXML
-	    private TableColumn<Request, Date> completionDateColumn1;
+	    private TableColumn<Request, java.util.Date> completionDateColumn1;
 
 	    @FXML
 	    private TableColumn<Request, String> resolvedByColumn1;
 
 	    @FXML
-	    private TextField statusTextField1;
+	    private TextField tfActiveStatus;
 
 	    @FXML
-	    private TextField completionDateTextField1;
+	    private TextField tfActiveCompletionDate;
 
 	    @FXML
-	    private TextField requestIdTextField1;
+	    private TextField tfActiveRequestId;
 
 	    @FXML
-	    private TextField resolverTextField1;
+	    private TextField tfActiveResolver;
 
 	    @FXML
 		private void initialize () {
-	    	
+	    	//Mouse click eventhandlers
+	    	updateRequestBtn.setOnMouseClicked(this::handleUpdateOnMouseClicked);
 	    	requestTable1.setOnMouseClicked(this::handleTableOnMouseClicked);
+	    	
+	    	//btnHome.setOnMouseClicked(this::goHome);
 	   
 	    	// Match column with property
-			requestIdColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
+			//requestIdColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
+	    	requestIdColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
 			reportedByColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("reportedBy"));
-			requestDateColumn1.setCellValueFactory(new PropertyValueFactory<Request, Date>("requestDate"));
+			requestDateColumn1.setCellValueFactory(new PropertyValueFactory<Request, java.util.Date>("requestDate"));
 			addressColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("address"));
 			houseNoColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("houseNo"));
 			apartmentNoColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("apartmentNo"));
 			districtColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("district"));
 			descriptionColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("description"));
 			statusColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("status"));
-			completionDateColumn1.setCellValueFactory(new PropertyValueFactory<Request, Date>("completionDate"));
+			completionDateColumn1.setCellValueFactory(new PropertyValueFactory<Request, java.util.Date>("completionDate"));
 			resolvedByColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("completedBy"));
 	 
 			// Update table
@@ -103,16 +109,55 @@ public class EditRequestController {
 	  
 	    }
 				  
-		    
+		
+	    @FXML
+	    private void handleUpdateOnMouseClicked(MouseEvent event) {
+	    /*
+	    	  // Check for empty str
+	 	   if(tfActiveRequestId.getText() == "") {
+	 		   return;
+	 	   }
+	 	   */
+	 	   // Get text
+	 	   request1.setRequestId(Integer.parseInt(tfActiveRequestId.getText()));
+	 	   request1.setStatus(tfActiveStatus.getText());
+	 	   java.util.Date completionDate = util.stringToDate(tfActiveCompletionDate.getText());
+	 	   request1.setCompletionDate((Date) completionDate);
+	 	   
+	 	   request1.setStatus(tfActiveResolver.getText());
+	 	 
+	 	   
+	 	   // Update record in database
+	 	   rr1.update(request1);
+	 	   
+	 	   // Update table
+	 	   updateTable();
+	    }
+	    
+	    
 	    @FXML
 	    private void handleTableOnMouseClicked(MouseEvent event)
 	    {
 	    	request1 = requestTable1.getSelectionModel().getSelectedItem();
-	    //	tfActiveRequest.setText(request.getName());
+	    	System.out.println(request1); //TODO temp
+	    	System.out.println("Request Id: "); //TODO temp
+	    	System.out.println(request1.getRequestId()); // TODO temp
+	    	String strId = Integer.toString(request1.getRequestId());
+	    	System.out.println(strId); //TODO temp
+	    	tfActiveRequestId.setText(strId);
+	    	tfActiveStatus.setText(request1.getStatus());
+	    	//tfActiveCompletionDate.setText((request1.getCompletionDate())+"");
+	    	//String completionDate = (""+request1.getCompletionDate());
+	    	tfActiveCompletionDate.setText(util.dateToString(request1.getCompletionDate()));
+	    	//tfActiveCompletionDate.setText(request1.getCompletionDate()+"");
+	    	//tfActiveCompletionDate.setDate(request1.getCompletionDate()) 
+	    	tfActiveResolver.setText(request1.getCompletedBy());
+	    	
 	    	
 	    }
-	    
-	    private void updateTable() {
+
+
+		private void updateTable() {
 	    	
 			ObservableList<Request> list1 = FXCollections.observableArrayList(rr1.getAll());
 			requestTable1.setItems((ObservableList<Request>) list1);

@@ -20,7 +20,7 @@
       <TextArea layoutX="16.0" layoutY="367.0" prefHeight="37.0" prefWidth="1005.0" />
       <Label layoutX="14.0" layoutY="350.0" text="Result console" />
       <Button id="goHome" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
-      <TableView fx:id="requestTable1" layoutX="14.0" layoutY="137.0" prefHeight="210.0" prefWidth="1005.0">
+      <TableView fx:id="requestTable1" layoutX="14.0" layoutY="137.0" onMouseClicked="#handleTableOnMouseClicked" prefHeight="210.0" prefWidth="1005.0">
          <columns>
             <TableColumn fx:id="requestIdColumn1" prefWidth="67.0" text="Request id" />
             <TableColumn fx:id="reportedByColumn1" prefWidth="142.0" text="Reported by" />
@@ -36,14 +36,14 @@
             <TableColumn prefWidth="107.0" text="Completion date" />
          </columns>
       </TableView>
-      <TextField fx:id="statusTextField1" layoutX="184.0" layoutY="103.0" promptText="Enter updated status" />
-      <TextField fx:id="completionDateTextField1" layoutX="343.0" layoutY="103.0" promptText="Enter completion date" />
+      <TextField fx:id="tfActiveStatus" layoutX="184.0" layoutY="103.0" promptText="Enter updated status" />
+      <TextField fx:id="tfActiveCompletionDate" layoutX="343.0" layoutY="103.0" promptText="Enter completion date" />
       <Label layoutX="25.0" layoutY="86.0" text="Request Id" />
       <Label layoutX="184.0" layoutY="86.0" text="Status" />
-      <TextField fx:id="requestIdTextField1" editable="false" layoutX="24.0" layoutY="103.0" />
+      <TextField fx:id="tfActiveRequestId" editable="false" layoutX="24.0" layoutY="103.0" />
       <Label layoutX="343.0" layoutY="86.0" text="Completion Date" />
       <Label layoutX="503.0" layoutY="86.0" text="Allocated to" />
-      <TextField fx:id="resolverTextField1" layoutX="501.0" layoutY="103.0" promptText="Enter full name" />
+      <TextField fx:id="tfActiveResolver" layoutX="501.0" layoutY="103.0" promptText="Enter full name" />
       <Label layoutX="25.0" layoutY="57.0" text="To edit, select a request in the table">
          <font>
             <Font size="16.0" />
