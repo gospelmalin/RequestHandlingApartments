@@ -25,6 +25,9 @@ public class RequestViewController {
 	
 	 @FXML
     private Button goHome;
+	 
+	 @FXML
+	private Button refreshBtn;
 
 		@FXML
 	private TableView<Request> requestTable;
@@ -157,8 +160,8 @@ public class RequestViewController {
 	    private void showEditSelectedRequest(ActionEvent actionevent) {
 			//TODO
 			//setLimitBy - used here?
-			ViewController.activate("RequestView"); //TODO correct view?
-	    	System.out.println("openViewRequestsForm? should show selected request and allow editing");
+			ViewController.activate("EditRequest"); //TODO correct view?
+	    	System.out.println("EditRequestForm? should show selected request and allow editing");
 		}
 		
 		
@@ -168,9 +171,14 @@ public class RequestViewController {
 				requestTable.setItems((ObservableList<Request>) list);
 		    }
 		
+		 
+		 @FXML
+		 private void refreshData() {
+		 updateTable();
+		 }
 
 		    @FXML
-		    void showRequestsForSelectedApartmentsAndStatusByLimit(ActionEvent event) {
+		 private void showRequestsForSelectedApartmentsAndStatusByLimit(ActionEvent event) {
 		    	String apartment = null; //TODO get text from selection of combobox selectApartmentCombo		  
 		    	//String apartment = selectApartmentCombo.getValue();
 		    	
