@@ -68,7 +68,7 @@ public class HouseRepository implements IRepository<House>{
         }
 
 
-        //Test houses.add(new House(1, "24B", 1, "Duck Creek Road"));
+
         if(houses.isEmpty()) {
             System.out.println("Empty! I most likely did not get any data");
         }

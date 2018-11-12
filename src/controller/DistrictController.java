@@ -104,8 +104,7 @@ public class DistrictController{
     	tfActiveDistrict.setText(district.getName());
     	
     }
-   
-    // Check that text field is not empty
+
     @FXML
     private void handleOnMouseClicked(MouseEvent event)
     {

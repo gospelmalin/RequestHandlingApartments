@@ -2,6 +2,9 @@ package repository;
 
 import model.Apartment;
 import util.Database;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class ApartmentRepository implements IRepository<Apartment> {
             // Set members
             Apartment.setApartmentId(rs.getInt("apartment_id"));
             Apartment.setApartmentNo(rs.getInt("apartment_no"));
+            Apartment.setHouseId(rs.getInt("house_id"));
             rs.close();
 
         } catch (SQLException e) {
@@ -43,8 +47,8 @@ public class ApartmentRepository implements IRepository<Apartment> {
     public ArrayList<Apartment> getAll() {
 
         // get by id
-        String query = "SELECT apartment_id, apartment_no, house_no from apartment INNER JOIN house WHERE apartment.house_id = house.house_id";
-
+        //String query = "SELECT apartment_id, apartment_no, house_id from apartment INNER JOIN house WHERE apartment.house_id = house.house_id";
+        String query = "SELECT * FROM apartment";
         // The resultset
         ResultSet rs = Database.executeQuery(query);
 
@@ -54,7 +58,7 @@ public class ApartmentRepository implements IRepository<Apartment> {
         try {
             while(rs.next()) {
                 // add Apartment to list
-                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no"), rs.getString("house_no")));
+                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no"), rs.getInt("house_id")));
             }
             rs.close();
 
@@ -62,15 +66,10 @@ public class ApartmentRepository implements IRepository<Apartment> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
-        //Test apartment.add(new Apartment(1, 1));
-        if(apartment.isEmpty()) {
-            System.out.println("Empty! I most likely did not get any data");
-        }
-        System.out.println(" Apartments " + apartment.toString());
         return apartment;
     }
+
+
 
     @Override
     public void update(Apartment t) {
@@ -79,7 +78,32 @@ public class ApartmentRepository implements IRepository<Apartment> {
     @Override
     public void add(Apartment t) {
 
-        //TODO IF time
+        // Get connection
+        Connection conn = Database.getConnection();
+
+        // Setup query
+        String query = "INSERT INTO apartment(apartment_no, house_id) VALUES(?, ?);";
+
+        try {
+
+            // Setup statment
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Set values
+            stmt.setInt(1, t.getApartmentNo());
+            stmt.setInt(2, t.getHouseId());
+
+            // Execute statment
+            stmt.executeUpdate();
+
+            // Statment & conn
+            stmt.close();
+            Database.closeConnection();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 
@@ -87,8 +111,27 @@ public class ApartmentRepository implements IRepository<Apartment> {
     @Override
     public void remove(Apartment t) {
 
-       //TODO IF time
+        String query = "DELETE FROM apartment WHERE apartment_id=" + t.getApartmentId();
+        Database.executeUpdate(query);
 
+
+
+    }
+
+    public ArrayList<Apartment> getAllWithHouseNumber() {
+        String query = "SELECT apartment.apartment_id, apartment.apartment_no, apartment.house_id, house.house_no FROM apartment INNER JOIN house WHERE apartment.house_id = house.house_id";
+        ResultSet rs = Database.executeQuery(query);
+        ArrayList<Apartment> apartment = new ArrayList<Apartment>();
+
+        try{
+            while(rs.next()) {
+                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no"), rs.getInt("house_id"), rs.getString("house_no")));
+            }
+        }catch (SQLException sql) {
+            System.out.println("Error in ApartmentRepo: " + sql);
+        }
+        ;
+        return apartment;
     }
 
 }

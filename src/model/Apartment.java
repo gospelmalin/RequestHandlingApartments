@@ -4,19 +4,25 @@ public class Apartment {
 
 	private int apartmentId;
 	private int apartmentNo;
-	private String houseId;
+	private int houseId;
+	private String houseNumber;
+
 	
 	public Apartment() {}
 
-	public Apartment(int apartmentId, int apartmentNo, String houseId) {
+	public Apartment(int apartmentId, int apartmentNo, int houseId, String houseNumber ) {
 		this.apartmentId = apartmentId;
 		this.apartmentNo = apartmentNo;
 		this.houseId = houseId;
+		this.houseNumber = houseNumber;
 	}
 
-	public Apartment(int apartmentId, int apartmentNo) {
+
+	public Apartment(int apartmentId, int apartmentNo, int houseId) {
 		this.apartmentId = apartmentId;
 		this.apartmentNo = apartmentNo;
+		this.houseId = houseId;
+
 	}
 
 	/**
@@ -50,19 +56,24 @@ public class Apartment {
 	/**
 	 * @return the houseId
 	 */
-	public String getHouseId() {
+	public int getHouseId() {
 		return houseId;
 	}
 
 	/**
+	 * @return the houseId
+	 */
+	public String getHouseNumber() {return houseNumber;}
+
+	/**
 	 * @param houseId the houseId to set
 	 */
-	public void setHouseId(String houseId) {
+	public void setHouseId(int houseId) {
 		this.houseId = houseId;
 	}
 	
 	@Override
 	public String toString() {
-		return "Apartment [Apartmentid=" + apartmentId + ", apartmentNo=" + apartmentNo + ", houseId=" + houseId + ", toString()=" + super.toString() + "]";
+		return "Apartment [Apartmentid=" + apartmentId + ", apartmentNo=" + apartmentNo + ", houseId=" + houseId +  ", houseNumber=" + houseNumber +", toString()=" + super.toString() + "]";
 	}
 }

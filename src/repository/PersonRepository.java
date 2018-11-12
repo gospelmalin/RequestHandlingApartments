@@ -140,7 +140,7 @@ public class PersonRepository implements IRepository<Person>{
 			person.setLastName(rs.getString("Last name"));
 			person.setFullName(rs.getString("Full name"));
 			
-			Apartment currentApartment = new Apartment((rs.getInt("Apartment_id")), (rs.getInt("Apartment")),(rs.getString("House_no")) );
+			Apartment currentApartment = new Apartment((rs.getInt("Apartment_id")), (rs.getInt("Apartment")),(rs.getInt("House_no")) );
 			person.setCurrentApartment(currentApartment);
 
 			rs.close();
