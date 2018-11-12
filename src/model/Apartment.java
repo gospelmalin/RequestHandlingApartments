@@ -9,6 +9,11 @@ public class Apartment {
 
 	
 	public Apartment() {}
+	public Apartment(int apartmentId, int apartmentNo, String houseNumber ) {
+		this.apartmentId = apartmentId;
+		this.apartmentNo = apartmentNo;
+		this.houseNumber = houseNumber;
+	}
 
 	public Apartment(int apartmentId, int apartmentNo, int houseId, String houseNumber ) {
 		this.apartmentId = apartmentId;
