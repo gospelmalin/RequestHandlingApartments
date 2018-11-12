@@ -63,10 +63,10 @@ public class EditApartmentController {
             getHouseNoList.add(grabHouse); //Add the ID to the new Integer arraylist
         }
 
-        //To get the items in the choice box:�
+        //To get the items in the choice box:
         //ObservableList<String> availableChoices1 = addRequestHouseChoiceBox.getItems();
 
-        // To set the items in the choice box:�
+        // To set the items in the choice box:
         ObservableList<String> availableHouseChoices = FXCollections.observableArrayList(getHouseNoList);
         HouseChoiceBox.setItems(availableHouseChoices);
 
