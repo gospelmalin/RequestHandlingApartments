@@ -167,8 +167,15 @@ public class AddRequestController {
 	 	Request request = new Request(fullName, apartmentString, house, description, requestDate);
 	 	RequestRepository rr = new RequestRepository();
 	 	rr.add(request);
+	 
 	 	System.out.println("Your request is submitted and will be handled.");
-	 	 
+	 	
+	 	ViewController.activate("RequestView"); // Will show request view, but not updated :(
+	 	/*//TEST showing selected
+	 	RequestRepository rr2 = new RequestRepository();
+	 	Request latestRequest= rr2.getLastAdded();
+	 	System.out.println(latestRequest.getRequestId());
+	 	*/
 	 }
 
 	//Go back to home screen
