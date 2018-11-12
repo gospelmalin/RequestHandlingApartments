@@ -43,7 +43,7 @@ public class ApartmentRepository implements IRepository<Apartment> {
     public ArrayList<Apartment> getAll() {
 
         // get by id
-        String query = "SELECT * FROM apartment";
+        String query = "SELECT apartment_id, apartment_no, house_no from apartment INNER JOIN house WHERE apartment.house_id = house.house_id";
 
         // The resultset
         ResultSet rs = Database.executeQuery(query);
@@ -54,7 +54,7 @@ public class ApartmentRepository implements IRepository<Apartment> {
         try {
             while(rs.next()) {
                 // add Apartment to list
-                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no")));
+                apartment.add(new Apartment(rs.getInt("apartment_id"),rs.getInt("apartment_no"), rs.getString("house_no")));
             }
             rs.close();
 

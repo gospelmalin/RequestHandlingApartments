@@ -4,11 +4,11 @@ public class Apartment {
 
 	private int apartmentId;
 	private int apartmentNo;
-	private int houseId;
+	private String houseId;
 	
 	public Apartment() {}
 
-	public Apartment(int apartmentId, int apartmentNo, int houseId) {
+	public Apartment(int apartmentId, int apartmentNo, String houseId) {
 		this.apartmentId = apartmentId;
 		this.apartmentNo = apartmentNo;
 		this.houseId = houseId;
@@ -50,14 +50,14 @@ public class Apartment {
 	/**
 	 * @return the houseId
 	 */
-	public int getHouseId() {
+	public String getHouseId() {
 		return houseId;
 	}
 
 	/**
 	 * @param houseId the houseId to set
 	 */
-	public void setHouseId(int houseId) {
+	public void setHouseId(String houseId) {
 		this.houseId = houseId;
 	}
 	
