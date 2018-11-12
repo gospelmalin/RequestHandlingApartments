@@ -72,6 +72,7 @@ public class EditRequestController {
 
 	    @FXML
 	    private TextField tfActiveStatus;
+   		
 
 	    @FXML
 	    private TextField tfActiveCompletionDate;
@@ -81,9 +82,24 @@ public class EditRequestController {
 
 	    @FXML
 	    private TextField tfActiveResolver;
+	    
+		    
 
+		@FXML
+    	private Button showSelectedRequestBtn;
+    	
+    	@FXML
+    	private Button showEditSelectedRequestBtn;
+    	
 	    @FXML
 		private void initialize () {
+	    	
+	    	selectStatusCombo.getItems().addAll("Not started","In progress","Completed");
+			selectStatusCombo.setValue("Completed");
+		
+			selectRequestIdCombo.getItems().addAll("1","In progress","Completed","Any");
+			selectRequestIdCombo.setValue("Any");
+		
 	    	//Mouse click eventhandlers
 	    	updateRequestBtn.setOnMouseClicked(this::handleUpdateOnMouseClicked);
 	    	requestTable1.setOnMouseClicked(this::handleTableOnMouseClicked);
@@ -108,7 +124,36 @@ public class EditRequestController {
 			updateTable();
 	  
 	    }
-				  
+		
+		@FXML
+		    void updateButtonStatus(ActionEvent event) {
+		    	String apartment = null; //TODO get text from selection of combobox selectApartmentCombo		  
+		    	//String apartment = selectApartmentCombo.getValue();
+		    	String status_id = null;
+		    	String statusid = selectStatusCombo.getValue(); //TODO get text from selection of combobox selectStatusCombo
+		    	if(statusid == "Not started") {
+		    		status_id = "1";
+		    	}
+		    	else if(statusid == "In progress") {
+		    		status_id = "2";
+		    	}
+		    	else if(statusid == "Completed") {
+		    		status_id = "3";
+		    	}
+		    	int request_id = request.getRequestId();
+		    	
+			  System.out.println(status_id);
+			  System.out.println(request_id);
+			    
+			 Database.updateStatus(Integer.toString(request_id), status_id);
+			 
+			 if (statusid == "Completed") {
+				 Util util = new Util();
+				 	java.sql.Date completion_date = util.getCurrentDate();
+				 Database.updateCompletedDate(Integer.toString(request_id), completion_date);
+			 }
+			    
+		    }		  
 		
 	    @FXML
 	    private void handleUpdateOnMouseClicked(MouseEvent event) {
@@ -156,6 +201,35 @@ public class EditRequestController {
 	    	
 	    }
 
+		    @FXML
+		    void updateButtonStatus(ActionEvent event) {
+		    	String apartment = null; //TODO get text from selection of combobox selectApartmentCombo		  
+		    	//String apartment = selectApartmentCombo.getValue();
+		    	String status_id = null;
+		    	String statusid = selectStatusCombo.getValue(); //TODO get text from selection of combobox selectStatusCombo
+		    	if(statusid == "Not started") {
+		    		status_id = "1";
+		    	}
+		    	else if(statusid == "In progress") {
+		    		status_id = "2";
+		    	}
+		    	else if(statusid == "Completed") {
+		    		status_id = "3";
+		    	}
+		    	int request_id = request.getRequestId();
+		    	
+			  System.out.println(status_id);
+			  System.out.println(request_id);
+			    
+			 Database.updateStatus(Integer.toString(request_id), status_id);
+			 
+			 if (statusid == "Completed") {
+				 Util util = new Util();
+				 	java.sql.Date completion_date = util.getCurrentDate();
+				 Database.updateCompletedDate(Integer.toString(request_id), completion_date);
+			 }
+			    
+		    }
 
 		private void updateTable() {
 	    	

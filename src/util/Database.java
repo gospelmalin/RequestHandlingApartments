@@ -1,6 +1,7 @@
 package util;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,6 +92,54 @@ public class Database {
 		// close db
 		dbClose();
 		
+    }
+    
+    public static void updateStatus(String request_id, String status_id) {
+
+        // connect to db
+        dbConnect();
+
+        //
+
+        try {
+            Statement stmt = conn.prepareStatement("UPDATE request SET status_id = ? WHERE request_id = ?");
+            ((PreparedStatement) stmt).setString(2, request_id);
+            ((PreparedStatement) stmt).setString(1, status_id);
+
+            ResultSet resultSet = ((PreparedStatement) stmt).executeQuery();
+            
+
+        } catch (SQLException e) {
+            System.err.println("An SQL exception occured when while executing query " + e);
+        }
+
+        // close db
+        dbClose();
+
+    }
+    
+    public static void updateCompletedDate(String request_id, Date completion_date) {
+
+        // connect to db
+        dbConnect();
+
+        //
+
+        try {
+            Statement stmt = conn.prepareStatement("UPDATE request SET completion_date = ? WHERE request_id = ?");
+            ((PreparedStatement) stmt).setString(2, request_id);
+            ((PreparedStatement) stmt).setDate(1, completion_date);
+
+            ResultSet resultSet = ((PreparedStatement) stmt).executeQuery();
+            
+
+        } catch (SQLException e) {
+            System.err.println("An SQL exception occured when while executing query " + e);
+        }
+
+        // close db
+        dbClose();
+
     }
     
     //How to do this?
