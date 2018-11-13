@@ -17,7 +17,7 @@ import model.Request;
 import repository.RequestRepository;
 import util.Database;
 import util.Util;
-
+import repository.RequestRepository;
 public class EditRequestController {
 	RequestRepository rr1 = new RequestRepository();
 	Request request1 = new Request();
@@ -201,15 +201,15 @@ public class EditRequestController {
 			  System.out.println(status_id);
 			  System.out.println(request_id);
 			    
-			 Database.updateStatus(Integer.toString(request_id), status_id);
+			 RequestRepository.updateStatus(Integer.toString(request_id), status_id);
 			 
 			 if (statusid == "Completed") {
 				 Util util = new Util();
 				 	java.sql.Date completion_date = util.getCurrentDate();
-				 Database.updateCompletedDate(Integer.toString(request_id), completion_date);
+				 	RequestRepository.updateCompletedDate(Integer.toString(request_id), completion_date);
 			 }
-			    
 		    }
+		    
 		    
 		    @FXML
 		    private void updateResolver() {

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Apartment;
@@ -208,6 +209,55 @@ public class RequestRepository implements IRepository<Request> {
 			// TODO Auto-generated method stub
 			
 		}
+		
+ public static void updateStatus(String request_id, String status_id) {
+
+        // connect to db
+	 	Connection conn = Database.getConnection();
+
+        //
+
+        try {
+            Statement stmt = conn.prepareStatement("UPDATE request SET status_id = ? WHERE request_id = ?");
+            ((PreparedStatement) stmt).setString(2, request_id);
+            ((PreparedStatement) stmt).setString(1, status_id);
+
+            ResultSet resultSet = ((PreparedStatement) stmt).executeQuery();
+            
+
+        } catch (SQLException e) {
+            System.err.println("An SQL exception occured when while executing query " + e);
+        }
+
+        // close db
+        Database.closeConnection();
+
+    }
+    
+    public static void updateCompletedDate(String request_id, Date completion_date) {
+
+        // connect to db
+    	Connection conn = Database.getConnection();
+
+        //
+
+        try {
+            Statement stmt = conn.prepareStatement("UPDATE request SET completion_date = ? WHERE request_id = ?");
+            ((PreparedStatement) stmt).setString(2, request_id);
+            ((PreparedStatement) stmt).setDate(1, completion_date);
+
+            ResultSet resultSet = ((PreparedStatement) stmt).executeQuery();
+            
+
+        } catch (SQLException e) {
+            System.err.println("An SQL exception occured when while executing query " + e);
+        }
+
+        // close db
+        Database.closeConnection();
+
+    }
+		    
 
 	
 }

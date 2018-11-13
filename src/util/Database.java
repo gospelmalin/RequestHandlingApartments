@@ -11,9 +11,9 @@ import java.sql.Statement;
 public class Database {
 	
 	private static final String DATABASE = "requesthandling";
-	private static final String CONN_STR = "jdbc:mariadb://192.168.10.105:3306/" + DATABASE;
-	private static final String USER = "jocke";
-	private static final String PWD = "123123";
+	private static final String CONN_STR = "jdbc:mariadb://192.168.43.179:3306/" + DATABASE;
+	private static final String USER = "maxx";
+	private static final String PWD = "abc123";
 	
 	//Connection
     private static Connection conn = null;
@@ -93,7 +93,7 @@ public class Database {
 		dbClose();
 		
     }
-    
+    /*
     public static void updateStatus(String request_id, String status_id) {
 
         // connect to db
@@ -141,7 +141,7 @@ public class Database {
         dbClose();
 
     }
-    
+    */
     //How to do this?
     /*
     //DB Execute Update PreparedStatement (For Update/Insert/Delete) Operation
