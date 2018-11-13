@@ -15,22 +15,26 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Request;
 import repository.RequestRepository;
+import util.Database;
 import util.Util;
 
 public class EditRequestController {
 	RequestRepository rr1 = new RequestRepository();
 	Request request1 = new Request();
 	Util util = new Util();
-/*
-	  @FXML
-	    private ComboBox<?> selectRequestIdCombo1;
+
+	  //@FXML
+	 //  private ComboBox<Integer> selectRequestIdCombo1;
+
+		@FXML
+		private ComboBox<String> selectRequestIdCombo1;
+		
+	    @FXML
+	    private ComboBox<String> selectResolverNameCombo1;
 
 	    @FXML
-	    private ComboBox<?> selectResolverNameCombo1;
+	    private ComboBox<String> selectStatusCombo1;
 
-	    @FXML
-	    private ComboBox<?> selectStatusCombo1;
-*/
 	    @FXML
 	    private Button updateRequestBtn;
 
@@ -72,6 +76,7 @@ public class EditRequestController {
 
 	    @FXML
 	    private TextField tfActiveStatus;
+   		
 
 	    @FXML
 	    private TextField tfActiveCompletionDate;
@@ -81,9 +86,28 @@ public class EditRequestController {
 
 	    @FXML
 	    private TextField tfActiveResolver;
+	    
+		    
 
+		@FXML
+    	private Button showSelectedRequestBtn;
+    	
+    	@FXML
+    	private Button showEditSelectedRequestBtn;
+    	
 	    @FXML
 		private void initialize () {
+	    	
+	  	selectStatusCombo1.getItems().addAll("Not started","In progress","Completed"); //preferably get values from database, if not, better selections should be possible
+			//selectStatusCombo1.setValue("Completed");
+	   		//selectStatusCombo1.setValue("Not completed"); //better if not getting value from the database
+		
+			selectRequestIdCombo1.getItems().addAll("1","2","3","4","5","6","7","8", "9","10","11","12","13","14","15","16"); //TODO temp - should get values from database if combobox
+			//selectRequestIdCombo1.setValue("Any");
+			
+			selectResolverNameCombo1.getItems().addAll("Cameron Delae"); //TODO temp - should get values from database if combobox
+			
+		
 	    	//Mouse click eventhandlers
 	    	updateRequestBtn.setOnMouseClicked(this::handleUpdateOnMouseClicked);
 	    	requestTable1.setOnMouseClicked(this::handleTableOnMouseClicked);
@@ -91,7 +115,7 @@ public class EditRequestController {
 	    	//btnHome.setOnMouseClicked(this::goHome);
 	   
 	    	// Match column with property
-			//requestIdColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
+			requestIdColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
 	    	requestIdColumn1.setCellValueFactory(new PropertyValueFactory<Request, Integer>("requestId"));
 			reportedByColumn1.setCellValueFactory(new PropertyValueFactory<Request, String>("reportedBy"));
 			requestDateColumn1.setCellValueFactory(new PropertyValueFactory<Request, java.util.Date>("requestDate"));
@@ -108,7 +132,8 @@ public class EditRequestController {
 			updateTable();
 	  
 	    }
-				  
+		
+	    
 		
 	    @FXML
 	    private void handleUpdateOnMouseClicked(MouseEvent event) {
@@ -156,6 +181,48 @@ public class EditRequestController {
 	    	
 	    }
 
+		    @FXML
+		    void updateButtonStatus(ActionEvent event) {
+		    	String apartment = null; //TODO get text from selection of combobox selectApartmentCombo		  
+		    	//String apartment = selectApartmentCombo.getValue();
+		    	String status_id = null;
+		    	String statusid = selectStatusCombo1.getValue(); //TODO get text from selection of combobox selectStatusCombo
+		    	if(statusid == "Not started") {
+		    		status_id = "1";
+		    	}
+		    	else if(statusid == "In progress") {
+		    		status_id = "2";
+		    	}
+		    	else if(statusid == "Completed") {
+		    		status_id = "3";
+		    	}
+		    	int request_id = request1.getRequestId();
+		    	
+			  System.out.println(status_id);
+			  System.out.println(request_id);
+			    
+			 Database.updateStatus(Integer.toString(request_id), status_id);
+			 
+			 if (statusid == "Completed") {
+				 Util util = new Util();
+				 	java.sql.Date completion_date = util.getCurrentDate();
+				 Database.updateCompletedDate(Integer.toString(request_id), completion_date);
+			 }
+			    
+		    }
+		    
+		    @FXML
+		    private void updateResolver() {
+		    	//TODO
+		    	String resolverName = selectResolverNameCombo1.getValue();
+		    	int request_id = request1.getRequestId();
+		    	
+				  System.out.println(resolverName);
+				  System.out.println(request_id);
+				    //TEMP
+				  System.out.println("Here a call to RequestRepository to call the database to update resolver should be made");
+				// Database.updateResolver(Integer.toString(request_id), resolverName);
+		    }
 
 		private void updateTable() {
 	    	
