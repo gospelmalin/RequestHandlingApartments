@@ -35,8 +35,8 @@ public class EditRequestController {
 	    @FXML
 	    private ComboBox<String> selectStatusCombo1;
 
-	    @FXML
-	    private Button updateRequestBtn;
+	   // @FXML
+	  //  private Button updateRequestBtn;
 
 	    @FXML
 	    private TableView<Request> requestTable1;
@@ -109,7 +109,7 @@ public class EditRequestController {
 			
 		
 	    	//Mouse click eventhandlers
-	    	updateRequestBtn.setOnMouseClicked(this::handleUpdateOnMouseClicked);
+	    	//updateRequestBtn.setOnMouseClicked(this::handleUpdateOnMouseClicked);
 	    	requestTable1.setOnMouseClicked(this::handleTableOnMouseClicked);
 	    	
 	    	//btnHome.setOnMouseClicked(this::goHome);
@@ -134,15 +134,15 @@ public class EditRequestController {
 	    }
 		
 	    
-		
+		/*
 	    @FXML
 	    private void handleUpdateOnMouseClicked(MouseEvent event) {
-	    /*
+	    
 	    	  // Check for empty str
-	 	   if(tfActiveRequestId.getText() == "") {
-	 		   return;
-	 	   }
-	 	   */
+	 	  // if(tfActiveRequestId.getText() == "") {
+	 	//	   return;
+	 	 //  }
+	 	   
 	 	   // Get text
 	 	   request1.setRequestId(Integer.parseInt(tfActiveRequestId.getText()));
 	 	   request1.setStatus(tfActiveStatus.getText());
@@ -158,7 +158,7 @@ public class EditRequestController {
 	 	   // Update table
 	 	   updateTable();
 	    }
-	    
+	    */
 	    
 	    @FXML
 	    private void handleTableOnMouseClicked(MouseEvent event)
@@ -208,6 +208,8 @@ public class EditRequestController {
 				 	java.sql.Date completion_date = util.getCurrentDate();
 				 	RequestRepository.updateCompletedDate(Integer.toString(request_id), completion_date);
 			 }
+			// Update table
+				updateTable();
 		    }
 		    
 		    
