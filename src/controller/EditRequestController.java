@@ -102,10 +102,10 @@ public class EditRequestController {
 			//selectStatusCombo1.setValue("Completed");
 	   		//selectStatusCombo1.setValue("Not completed"); //better if not getting value from the database
 		
-			selectRequestIdCombo1.getItems().addAll("1","2","3","4","5","6","7","8", "9","10","11","12","13","14","15","16"); //TODO temp - should get values from database if combobox
+			//selectRequestIdCombo1.getItems().addAll("1","2","3","4","5","6","7","8", "9","10","11","12","13","14","15","16"); //TODO temp - should get values from database if combobox
 			//selectRequestIdCombo1.setValue("Any");
 			
-			selectResolverNameCombo1.getItems().addAll("Cameron Delae"); //TODO temp - should get values from database if combobox
+			selectResolverNameCombo1.getItems().addAll("Cameron Delae","Juan Perez", "Emil Lund"); //TODO temp - should get values from database if combobox
 			
 		
 	    	//Mouse click eventhandlers
@@ -170,13 +170,13 @@ public class EditRequestController {
 	    	String strId = Integer.toString(request1.getRequestId());
 	    	System.out.println(strId); //TODO temp
 	    	tfActiveRequestId.setText(strId);
-	    	tfActiveStatus.setText(request1.getStatus());
+	    //	tfActiveStatus.setText(request1.getStatus());
 	    	//tfActiveCompletionDate.setText((request1.getCompletionDate())+"");
 	    	//String completionDate = (""+request1.getCompletionDate());
-	    	tfActiveCompletionDate.setText(util.dateToString(request1.getCompletionDate()));
+	    //	tfActiveCompletionDate.setText(util.dateToString(request1.getCompletionDate()));
 	    	//tfActiveCompletionDate.setText(request1.getCompletionDate()+"");
 	    	//tfActiveCompletionDate.setDate(request1.getCompletionDate()) 
-	    	tfActiveResolver.setText(request1.getCompletedBy());
+	  // 	tfActiveResolver.setText(request1.getCompletedBy());
 	    	
 	    	
 	    }

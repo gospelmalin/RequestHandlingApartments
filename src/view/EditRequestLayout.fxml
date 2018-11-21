@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditRequestController">
@@ -18,10 +17,8 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutX="224.0" layoutY="10.0" text="Selected request" />
-      <Label layoutX="661.0" layoutY="11.0" text="Resolver name" />
-      <Label layoutX="395.0" layoutY="11.0" text="Status" />
-      <Button fx:id="updateRequestBtn" layoutX="696.0" layoutY="103.0" mnemonicParsing="false" onAction="#updateButtonStatus" text="Update request" />
+      <Label layoutX="189.0" layoutY="85.0" text="Status" />
+      <Button fx:id="updateRequestBtn" layoutX="921.0" layoutY="103.0" mnemonicParsing="false" onAction="#updateButtonStatus" text="Update request" />
       <TextArea layoutX="16.0" layoutY="367.0" prefHeight="37.0" prefWidth="1005.0" />
       <Label layoutX="14.0" layoutY="350.0" text="Result console" />
       <Button id="goHome" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#goHome" text="Home" />
@@ -41,24 +38,17 @@
             <TableColumn prefWidth="107.0" text="Completion date" />
          </columns>
       </TableView>
-      <TextField fx:id="tfActiveStatus" layoutX="184.0" layoutY="103.0" promptText="Enter updated status" />
-      <TextField fx:id="tfActiveCompletionDate" layoutX="343.0" layoutY="103.0" promptText="Enter completion date" />
-      <Label layoutX="25.0" layoutY="86.0" text="Request Id" />
-      <Label layoutX="184.0" layoutY="86.0" text="Status" />
+      <Label layoutX="25.0" layoutY="86.0" text="Selected Request" />
       <TextField fx:id="tfActiveRequestId" editable="false" layoutX="24.0" layoutY="103.0" />
-      <Label layoutX="343.0" layoutY="86.0" text="Completion Date" />
-      <Label layoutX="503.0" layoutY="86.0" text="Allocated to" />
-      <TextField fx:id="tfActiveResolver" layoutX="501.0" layoutY="103.0" promptText="Enter full name" />
+      <Label layoutX="455.0" layoutY="86.0" text="Allocated to/Resolver name" />
       <Label layoutX="22.0" layoutY="60.0" text="To edit, select a request in the table">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="selectRequestIdCombo1" layoutX="224.0" layoutY="30.0" prefWidth="150.0" />
-      <ComboBox fx:id="selectStatusCombo1" layoutX="395.0" layoutY="31.0" prefWidth="150.0" />
-      <ComboBox fx:id="selectResolverNameCombo1" layoutX="661.0" layoutY="31.0" prefWidth="150.0" />
-      <Button fx:id="updateStatus" layoutX="556.0" layoutY="30.0" mnemonicParsing="false" onAction="#updateButtonStatus" text="Update status" />
-      <Button fx:id="updateResolver" layoutX="820.0" layoutY="31.0" mnemonicParsing="false" onAction="#updateResolver" text="Update resolver" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2f0f0" height="46.0" layoutX="2.0" layoutY="85.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1015.0" />
+      <ComboBox fx:id="selectStatusCombo1" layoutX="189.0" layoutY="105.0" prefWidth="150.0" />
+      <ComboBox fx:id="selectResolverNameCombo1" layoutX="455.0" layoutY="105.0" prefWidth="150.0" />
+      <Button fx:id="updateStatus" layoutX="350.0" layoutY="104.0" mnemonicParsing="false" onAction="#updateButtonStatus" text="Update status" />
+      <Button fx:id="updateResolver" layoutX="614.0" layoutY="105.0" mnemonicParsing="false" onAction="#updateResolver" text="Update resolver" />
    </children>
 </AnchorPane>
